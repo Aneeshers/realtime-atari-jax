@@ -10,10 +10,27 @@ import jax.numpy as jnp
 import haiku as hk
 import optax
 from typing import NamedTuple, Literal
-import distrax
+# import distrax  # Replaced with custom implementation
 import pgx
 from pgx.experimental import auto_reset
 import time
+
+# Simple Categorical distribution wrapper using JAX built-ins
+class Categorical:
+    def __init__(self, logits):
+        self.logits = logits
+    
+    def sample(self, seed):
+        return jax.random.categorical(seed, self.logits)
+    
+    def log_prob(self, value):
+        log_probs = jax.nn.log_softmax(self.logits)
+        return jnp.take_along_axis(log_probs, value[..., None], axis=-1).squeeze(-1)
+    
+    def entropy(self):
+        log_probs = jax.nn.log_softmax(self.logits)
+        probs = jax.nn.softmax(self.logits)
+        return -(probs * log_probs).sum(axis=-1)
 
 import pickle
 from omegaconf import OmegaConf
@@ -44,7 +61,7 @@ class PPOConfig(BaseModel):
     vf_coef: float = 0.5
     max_grad_norm: float = 0.5
     wandb_project: str = "pgx-minatar-ppo"
-    save_model: bool = False
+    save_model: bool = True
 
     class Config:
         extra = "forbid"
@@ -127,7 +144,7 @@ def make_update_fn():
             # SELECT ACTION
             rng, _rng = jax.random.split(rng)
             logits, value = forward.apply(params, last_obs)
-            pi = distrax.Categorical(logits=logits)
+            pi = Categorical(logits=logits)
             action = pi.sample(seed=_rng)
             log_prob = pi.log_prob(action)
 
@@ -190,7 +207,7 @@ def make_update_fn():
                 def _loss_fn(params, traj_batch, gae, targets):
                     # RERUN NETWORK
                     logits, value = forward.apply(params, traj_batch.obs)
-                    pi = distrax.Categorical(logits=logits)
+                    pi = Categorical(logits=logits)
                     log_prob = pi.log_prob(traj_batch.action)
 
                     # CALCULATE VALUE LOSS
@@ -290,7 +307,7 @@ def evaluate(params, rng_key):
         state, R, rng_key = tup
         logits, value = forward.apply(params, state.observation)
         # action = logits.argmax(axis=-1)
-        pi = distrax.Categorical(logits=logits)
+        pi = Categorical(logits=logits)
         rng_key, _rng = jax.random.split(rng_key)
         action = pi.sample(seed=_rng)
         rng_key, _rng = jax.random.split(rng_key)
