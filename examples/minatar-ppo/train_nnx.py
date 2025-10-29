@@ -388,6 +388,7 @@ def train(rng):
     return runner_state  # (model, optimizer, env_state, last_obs, rng)
 
 
+
 if __name__ == "__main__":
     wandb.init(project=args.wandb_project, config=args.dict())
     rng = jax.random.PRNGKey(args.seed)
@@ -397,3 +398,6 @@ if __name__ == "__main__":
         # Save only learnable parameters (nnx.Param state) like Haiku params
         with open(f"{args.env_name}-seed={args.seed}.ckpt", "wb") as f:
             pickle.dump(nnx.state(model, nnx.Param), f)
+
+
+    
