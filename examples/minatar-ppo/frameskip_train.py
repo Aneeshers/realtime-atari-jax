@@ -166,6 +166,7 @@ class PPOConfig(BaseModel):
     max_grad_norm: float = 0.5
     wandb_project: str = "pgx-minatar-ppo"
     save_model: bool = True
+    gpu_id: int = 0
     
 
     class Config:
@@ -593,12 +594,25 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("--env_name", type=str, default="minatar-freeway")
 parser.add_argument("--num_envs", type=int, default=4096)
-parser.add_argument("--total_timesteps", type=int, default=100000000)
+parser.add_argument("--total_timesteps", type=int, default=300000000)
 parser.add_argument("--frame_skip", type=int, default=3)
 parser.add_argument("--save_model", type=bool, default=True)
+parser.add_argument("--gpu_id", type=int, default=0, help="GPU ID to use for training (0 or 1)")
 args = parser.parse_args()
 ppo_args = PPOConfig(**vars(args))
 print(f"Config: {ppo_args}")
+
+# Set up GPU selection
+print(f"Available JAX devices: {jax.devices()}")
+if ppo_args.gpu_id >= len(jax.devices()):
+    print(f"Warning: GPU ID {ppo_args.gpu_id} not available. Using device 0 instead.")
+    device_id = 0
+else:
+    device_id = ppo_args.gpu_id
+
+# Set the default device for JAX operations
+jax.config.update('jax_default_device', jax.devices()[device_id])
+print(f"Using device: {jax.devices()[device_id]}")
 
 env = pgx.make(str(ppo_args.env_name))
 if ppo_args.env_name == "minatar-freeway":
@@ -654,19 +668,19 @@ print(env.frame_skip)
 rng = jax.random.PRNGKey(123)
 rng, load_rng = jax.random.split(rng)
 
-model = load_model(env, CKPT_PATH, load_rng)
-print(f"Model loaded from {CKPT_PATH}")
-rng, eval_rng = jax.random.split(rng)
-eval_rollout_and_save_video(
-    model,
-    env,
-    rng_key=eval_rng,
-    num_envs_to_render=4,
-    max_steps=200,
-    fps=60,
-    output_gif=OUTPUT_GIF,
-)
+#model = load_model(env, CKPT_PATH, load_rng)
+#print(f"Model loaded from {CKPT_PATH}")
+#rng, eval_rng = jax.random.split(rng)
+#eval_rollout_and_save_video(
+#    model,
+#    env,
+#    rng_key=eval_rng,
+#    num_envs_to_render=4,
+#    max_steps=200,
+#    fps=60,
+#    output_gif=OUTPUT_GIF,
+#)
 #upload OUTPUT_GIF to wandb
-wandb.log({f"{ENV_NAME}-frameskip{ppo_args.frame_skip}": wandb.Video(OUTPUT_GIF)})
+#wandb.log({f"{ENV_NAME}-frameskip{ppo_args.frame_skip}": wandb.Video(OUTPUT_GIF)})
 
 wandb.finish()
