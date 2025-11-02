@@ -1,0 +1,2 @@
+wandb: Currently logged in as: aneeshmuppidi19. Use `wandb login --relogin` to force relogin
+[2025-11-01T20:44:30.409] error: *** JOB 44485835 ON holygpu8a11601 CANCELLED AT 2025-11-01T20:44:30 DUE to SIGNAL Terminated ***

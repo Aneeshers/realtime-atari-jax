@@ -1,0 +1,32 @@
+wandb: Currently logged in as: aneeshmuppidi19. Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.22.3 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.17.0
+wandb: Run data is saved locally in /n/home04/amuppidi/realtime-atari-jax/examples/minatar-ppo/wandb/run-20251101_210023-avm1z5ol
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run minatar-breakout-macroflat-fs6-N6-70k-params
+wandb: ⭐️ View project at https://wandb.ai/aneeshmuppidi19/ppo-minatar-breakout
+wandb: 🚀 View run at https://wandb.ai/aneeshmuppidi19/ppo-minatar-breakout/runs/avm1z5ol
+2025-11-01 21:00:45.349705: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 21:00:45.349769: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 21:00:45.349903: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 21:00:57.232151: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 21:00:57.232182: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 21:00:57.232190: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 21:00:57.232197: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+wandb: - 0.008 MB of 0.008 MB uploadedwandb: \ 0.008 MB of 0.008 MB uploadedwandb: | 0.081 MB of 0.081 MB uploadedwandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: minatar-breakout/eval_R ▁▆▅▇▆█▅█▇▆▆▇▆▅█▇▆▇▅▇▆▇▇▅▇▅▆▆▆▇▇▆▄▆▆▆█▅▇▅
+wandb:                     sec ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
+wandb:                   steps ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
+wandb: 
+wandb: Run summary:
+wandb: minatar-breakout/eval_R 1.48
+wandb:                     sec 183.61884
+wandb:                   steps 1997537280
+wandb: 
+wandb: 🚀 View run minatar-breakout-macroflat-fs6-N6-70k-params at: https://wandb.ai/aneeshmuppidi19/ppo-minatar-breakout/runs/avm1z5ol
+wandb: ⭐️ View project at: https://wandb.ai/aneeshmuppidi19/ppo-minatar-breakout
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20251101_210023-avm1z5ol/logs

@@ -1,0 +1,35 @@
+wandb: Currently logged in as: aneeshmuppidi19. Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.22.3 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.17.0
+wandb: Run data is saved locally in /n/home04/amuppidi/realtime-atari-jax/examples/minatar-ppo/wandb/run-20251101_203614-z0h64nzl
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run minatar-freeway-autoregressive-fs1-N5-135k-params
+wandb: ⭐️ View project at https://wandb.ai/aneeshmuppidi19/ppo-minatar-freeway
+wandb: 🚀 View run at https://wandb.ai/aneeshmuppidi19/ppo-minatar-freeway/runs/z0h64nzl
+2025-11-01 20:36:41.353846: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 20:36:41.353894: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 20:36:41.353919: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 20:36:41.353938: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 20:36:41.354161: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 20:36:41.354174: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 20:37:06.197606: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 20:37:06.199898: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 20:37:06.199914: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 20:37:06.199923: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+wandb: - 0.011 MB of 0.011 MB uploadedwandb: \ 0.011 MB of 0.011 MB uploadedwandb: | 0.054 MB of 0.054 MB uploadedwandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: minatar-freeway/eval_R ▁▂▄▅▅▆▆▆▇▇▇▇▇▇▇▇█▇██████████████████████
+wandb:                    sec ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
+wandb:                  steps ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
+wandb: 
+wandb: Run summary:
+wandb: minatar-freeway/eval_R 61.09
+wandb:                    sec 237.84125
+wandb:                  steps 699924480
+wandb: 
+wandb: 🚀 View run minatar-freeway-autoregressive-fs1-N5-135k-params at: https://wandb.ai/aneeshmuppidi19/ppo-minatar-freeway/runs/z0h64nzl
+wandb: ⭐️ View project at: https://wandb.ai/aneeshmuppidi19/ppo-minatar-freeway
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20251101_203614-z0h64nzl/logs

@@ -1,0 +1,33 @@
+wandb: Currently logged in as: aneeshmuppidi (aneeshers_research). Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.22.3 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.17.0
+wandb: Run data is saved locally in /n/home04/amuppidi/realtime-atari-jax/examples/minatar-ppo/wandb/run-20251101_194956-tdkkuryv
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run minatar-freeway-autoregressive-fs1-N1
+wandb: ⭐️ View project at https://wandb.ai/aneeshers_research/ppo-minatar-freeway
+wandb: 🚀 View run at https://wandb.ai/aneeshers_research/ppo-minatar-freeway/runs/tdkkuryv
+2025-11-01 19:50:27.086493: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 19:50:27.086701: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 19:50:27.086748: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 19:50:27.086770: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 19:50:27.086964: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 19:50:27.087414: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 19:51:02.791766: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 19:51:02.794446: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+wandb: - 0.011 MB of 0.011 MB uploadedwandb: \ 0.011 MB of 0.106 MB uploadedwandb: | 0.011 MB of 0.106 MB uploadedwandb: / 0.106 MB of 0.106 MB uploadedwandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: minatar-freeway/eval_R ▁▇▇█████████████████████████████████████
+wandb:                    sec ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
+wandb:                  steps ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
+wandb: 
+wandb: Run summary:
+wandb: minatar-freeway/eval_R 69.24
+wandb:                    sec 329.03316
+wandb:                  steps 499646464
+wandb: 
+wandb: 🚀 View run minatar-freeway-autoregressive-fs1-N1 at: https://wandb.ai/aneeshers_research/ppo-minatar-freeway/runs/tdkkuryv
+wandb: ⭐️ View project at: https://wandb.ai/aneeshers_research/ppo-minatar-freeway
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20251101_194956-tdkkuryv/logs
