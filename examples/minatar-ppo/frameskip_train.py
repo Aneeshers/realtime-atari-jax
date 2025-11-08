@@ -327,7 +327,7 @@ def make_update_step():
             return runner_state, transition
 
         runner_state = (model, optimizer, env_state, last_obs, rng)
-        runner_state, traj_batch = jax.lax.scan(_env_step, runner_state, None, length=ppo_args.num_steps)
+        runner_state, traj_batch = nnx.scan(_env_step, in_axes=(nnx.Carry, None), out_axes=(nnx.Carry, 0), length=ppo_args.num_steps)(runner_state, None)
 
         # -------- Advantage / targets (GAE) --------
         model, optimizer, env_state, last_obs, rng = runner_state
@@ -388,7 +388,7 @@ def make_update_step():
                 )(model, mb_traj, mb_adv, mb_targets)
 
                 # Optax step via NNX Optimizer (updates model in-place)
-                optimizer.update(model, grads)
+                optimizer.update(grads=grads)
 
                 return (model, optimizer), (total_loss, aux)
 
@@ -406,12 +406,12 @@ def make_update_step():
                 shuffled,
             )
 
-            (model, optimizer), losses = jax.lax.scan(_update_minibatch, (model, optimizer), minibatches)
+            (model, optimizer), losses = nnx.scan(_update_minibatch, in_axes=(nnx.Carry, 0), out_axes=(nnx.Carry, 0))((model, optimizer), minibatches)
             update_state = (model, optimizer, traj_batch, advantages, targets, rng)
             return update_state, losses
 
         update_state = (model, optimizer, traj_batch, advantages, targets, rng)
-        update_state, loss_info = jax.lax.scan(_update_epoch, update_state, None, length=ppo_args.update_epochs)
+        update_state, loss_info = nnx.scan(_update_epoch, in_axes=(nnx.Carry, None), out_axes=(nnx.Carry, 0), length=ppo_args.update_epochs)(update_state, None)
 
         model, optimizer, _, _, _, rng = update_state
         runner_state = (model, optimizer, env_state, last_obs, rng)

@@ -1,0 +1,19 @@
+wandb: Currently logged in as: aneeshmuppidi19. Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.22.3 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.17.0
+wandb: Run data is saved locally in /n/home04/amuppidi/realtime-atari-jax/examples/minatar-ppo/wandb/run-20251101_205449-mu0nz8i9
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run minatar-breakout-autoregressive-fs1-N6-135k-params
+wandb: ⭐️ View project at https://wandb.ai/aneeshmuppidi19/ppo-minatar-breakout
+wandb: 🚀 View run at https://wandb.ai/aneeshmuppidi19/ppo-minatar-breakout/runs/mu0nz8i9
+2025-11-01 20:55:13.276722: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 20:55:13.276770: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 20:55:13.276795: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 20:55:13.276814: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 20:55:13.277042: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 20:55:13.277057: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 20:55:33.474744: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 20:55:33.477040: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 20:55:33.477057: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2025-11-01 20:55:33.477066: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.

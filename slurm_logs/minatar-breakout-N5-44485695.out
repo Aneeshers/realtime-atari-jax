@@ -1,0 +1,1027 @@
+Job:  minatar-breakout-N5 (44485695)
+Node: holygpu8a11402.rc.fas.harvard.edu
+GPUs: 0
+Cores per task: 2
+Python path updated:
+sys.path includes: /home/ubuntu/tensorflow_test/control/real-timeRL/realtime-atari-jax
+PYTHONPATH env var: /home/ubuntu/tensorflow_test/control/real-timeRL/realtime-atari-jax:
+Config: env_name='minatar-breakout' seed=0 lr=0.0003 num_envs=4096 num_eval_envs=100 num_steps=128 plan_horizon=5 total_timesteps=2000000000 frame_skip=1 update_epochs=3 minibatch_size=4096 gamma=0.99 gae_lambda=0.95 clip_eps=0.2 ent_coef=0.01 vf_coef=0.5 max_grad_norm=0.5 wandb_project='pgx-minatar-ppo' save_model=True gpu_id=0
+Available JAX devices: [CudaDevice(id=0)]
+Using device: cuda:0
+Using custom Breakout env with frame skip
+Starting training (Macro-PPO, AR head)...
+ActorCritic( # Param: 134,247 (537.0 KB)
+  num_actions=3,
+  activation='tanh',
+  plan_horizon=5,
+  ar_hidden=128,
+  time_embed_dim=16,
+  conv=Conv( # Param: 544 (2.2 KB)
+    kernel_shape=(2, 2, 4, 32),
+    kernel=Param( # 512 (2.0 KB)
+      value=Array(shape=(2, 2, 4, 32), dtype=dtype('float32'))
+    ),
+    bias=Param( # 32 (128 B)
+      value=Array(shape=(32,), dtype=dtype('float32'))
+    ),
+    in_features=4,
+    out_features=32,
+    kernel_size=(2, 2),
+    strides=1,
+    padding='SAME',
+    input_dilation=1,
+    kernel_dilation=1,
+    feature_group_count=1,
+    use_bias=True,
+    mask=None,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x1551d084ea70>,
+    bias_init=<function zeros at 0x1551d24f8430>,
+    conv_general_dilated=<function conv_general_dilated at 0x1551d2d98280>,
+    promote_dtype=<function promote_dtype at 0x1551d084e5f0>
+  ),
+  avg_pool=functools.partial(<function avg_pool at 0x1551d1d89bd0>, window_shape=(2, 2), strides=(2, 2), padding='VALID'),
+  fc=Linear( # Param: 51,264 (205.1 KB)
+    kernel=Param( # 51,200 (204.8 KB)
+      value=Array(shape=(800, 64), dtype=dtype('float32'))
+    ),
+    bias=Param( # 64 (256 B)
+      value=Array(shape=(64,), dtype=dtype('float32'))
+    ),
+    in_features=800,
+    out_features=64,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x1551d084ea70>,
+    bias_init=<function zeros at 0x1551d24f8430>,
+    dot_general=<function dot_general at 0x1551d2d445e0>,
+    promote_dtype=<function promote_dtype at 0x1551d084e5f0>
+  ),
+  actor_h1=Linear( # Param: 4,160 (16.6 KB)
+    kernel=Param( # 4,096 (16.4 KB)
+      value=Array(shape=(64, 64), dtype=dtype('float32'))
+    ),
+    bias=Param( # 64 (256 B)
+      value=Array(shape=(64,), dtype=dtype('float32'))
+    ),
+    in_features=64,
+    out_features=64,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x1551d084ea70>,
+    bias_init=<function zeros at 0x1551d24f8430>,
+    dot_general=<function dot_general at 0x1551d2d445e0>,
+    promote_dtype=<function promote_dtype at 0x1551d084e5f0>
+  ),
+  actor_h2=Linear( # Param: 4,160 (16.6 KB)
+    kernel=Param( # 4,096 (16.4 KB)
+      value=Array(shape=(64, 64), dtype=dtype('float32'))
+    ),
+    bias=Param( # 64 (256 B)
+      value=Array(shape=(64,), dtype=dtype('float32'))
+    ),
+    in_features=64,
+    out_features=64,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x1551d084ea70>,
+    bias_init=<function zeros at 0x1551d24f8430>,
+    dot_general=<function dot_general at 0x1551d2d445e0>,
+    promote_dtype=<function promote_dtype at 0x1551d084e5f0>
+  ),
+  actor_out=Linear( # Param: 195 (780 B)
+    kernel=Param( # 192 (768 B)
+      value=Array(shape=(64, 3), dtype=dtype('float32'))
+    ),
+    bias=Param( # 3 (12 B)
+      value=Array(shape=(3,), dtype=dtype('float32'))
+    ),
+    in_features=64,
+    out_features=3,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x1551d084ea70>,
+    bias_init=<function zeros at 0x1551d24f8430>,
+    dot_general=<function dot_general at 0x1551d2d445e0>,
+    promote_dtype=<function promote_dtype at 0x1551d084e5f0>
+  ),
+  critic_h1=Linear( # Param: 4,160 (16.6 KB)
+    kernel=Param( # 4,096 (16.4 KB)
+      value=Array(shape=(64, 64), dtype=dtype('float32'))
+    ),
+    bias=Param( # 64 (256 B)
+      value=Array(shape=(64,), dtype=dtype('float32'))
+    ),
+    in_features=64,
+    out_features=64,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x1551d084ea70>,
+    bias_init=<function zeros at 0x1551d24f8430>,
+    dot_general=<function dot_general at 0x1551d2d445e0>,
+    promote_dtype=<function promote_dtype at 0x1551d084e5f0>
+  ),
+  critic_h2=Linear( # Param: 4,160 (16.6 KB)
+    kernel=Param( # 4,096 (16.4 KB)
+      value=Array(shape=(64, 64), dtype=dtype('float32'))
+    ),
+    bias=Param( # 64 (256 B)
+      value=Array(shape=(64,), dtype=dtype('float32'))
+    ),
+    in_features=64,
+    out_features=64,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x1551d084ea70>,
+    bias_init=<function zeros at 0x1551d24f8430>,
+    dot_general=<function dot_general at 0x1551d2d445e0>,
+    promote_dtype=<function promote_dtype at 0x1551d084e5f0>
+  ),
+  critic_out=Linear( # Param: 65 (260 B)
+    kernel=Param( # 64 (256 B)
+      value=Array(shape=(64, 1), dtype=dtype('float32'))
+    ),
+    bias=Param( # 1 (4 B)
+      value=Array([0.], dtype=float32)
+    ),
+    in_features=64,
+    out_features=1,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x1551d084ea70>,
+    bias_init=<function zeros at 0x1551d24f8430>,
+    dot_general=<function dot_general at 0x1551d2d445e0>,
+    promote_dtype=<function promote_dtype at 0x1551d084e5f0>
+  ),
+  hid_init=Linear( # Param: 8,320 (33.3 KB)
+    kernel=Param( # 8,192 (32.8 KB)
+      value=Array(shape=(64, 128), dtype=dtype('float32'))
+    ),
+    bias=Param( # 128 (512 B)
+      value=Array(shape=(128,), dtype=dtype('float32'))
+    ),
+    in_features=64,
+    out_features=128,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x1551d084ea70>,
+    bias_init=<function zeros at 0x1551d24f8430>,
+    dot_general=<function dot_general at 0x1551d2d445e0>,
+    promote_dtype=<function promote_dtype at 0x1551d084e5f0>
+  ),
+  gru_z=Linear( # Param: 18,944 (75.8 KB)
+    kernel=Param( # 18,816 (75.3 KB)
+      value=Array(shape=(147, 128), dtype=dtype('float32'))
+    ),
+    bias=Param( # 128 (512 B)
+      value=Array(shape=(128,), dtype=dtype('float32'))
+    ),
+    in_features=147,
+    out_features=128,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x1551d084ea70>,
+    bias_init=<function zeros at 0x1551d24f8430>,
+    dot_general=<function dot_general at 0x1551d2d445e0>,
+    promote_dtype=<function promote_dtype at 0x1551d084e5f0>
+  ),
+  gru_r=Linear( # Param: 18,944 (75.8 KB)
+    kernel=Param( # 18,816 (75.3 KB)
+      value=Array(shape=(147, 128), dtype=dtype('float32'))
+    ),
+    bias=Param( # 128 (512 B)
+      value=Array(shape=(128,), dtype=dtype('float32'))
+    ),
+    in_features=147,
+    out_features=128,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x1551d084ea70>,
+    bias_init=<function zeros at 0x1551d24f8430>,
+    dot_general=<function dot_general at 0x1551d2d445e0>,
+    promote_dtype=<function promote_dtype at 0x1551d084e5f0>
+  ),
+  gru_n=Linear( # Param: 18,944 (75.8 KB)
+    kernel=Param( # 18,816 (75.3 KB)
+      value=Array(shape=(147, 128), dtype=dtype('float32'))
+    ),
+    bias=Param( # 128 (512 B)
+      value=Array(shape=(128,), dtype=dtype('float32'))
+    ),
+    in_features=147,
+    out_features=128,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x1551d084ea70>,
+    bias_init=<function zeros at 0x1551d24f8430>,
+    dot_general=<function dot_general at 0x1551d2d445e0>,
+    promote_dtype=<function promote_dtype at 0x1551d084e5f0>
+  ),
+  ar_out=Linear( # Param: 387 (1.5 KB)
+    kernel=Param( # 384 (1.5 KB)
+      value=Array(shape=(128, 3), dtype=dtype('float32'))
+    ),
+    bias=Param( # 3 (12 B)
+      value=Array(shape=(3,), dtype=dtype('float32'))
+    ),
+    in_features=128,
+    out_features=3,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x1551d084ea70>,
+    bias_init=<function zeros at 0x1551d24f8430>,
+    dot_general=<function dot_general at 0x1551d2d445e0>,
+    promote_dtype=<function promote_dtype at 0x1551d084e5f0>
+  )
+)
+{'sec': 0.0, 'minatar-breakout/eval_R': 0.5399999618530273, 'steps': 0}
+{'sec': 0.7540390491485596, 'minatar-breakout/eval_R': 0.699999988079071, 'steps': 2621440}
+{'sec': 1.5056841373443604, 'minatar-breakout/eval_R': 1.0499999523162842, 'steps': 5242880}
+{'sec': 2.257845163345337, 'minatar-breakout/eval_R': 1.3899999856948853, 'steps': 7864320}
+{'sec': 3.009709596633911, 'minatar-breakout/eval_R': 1.71999990940094, 'steps': 10485760}
+{'sec': 3.761502265930176, 'minatar-breakout/eval_R': 2.2699999809265137, 'steps': 13107200}
+{'sec': 4.514939785003662, 'minatar-breakout/eval_R': 2.2799999713897705, 'steps': 15728640}
+{'sec': 5.2669456005096436, 'minatar-breakout/eval_R': 2.450000047683716, 'steps': 18350080}
+{'sec': 6.018687009811401, 'minatar-breakout/eval_R': 2.859999895095825, 'steps': 20971520}
+{'sec': 6.769829034805298, 'minatar-breakout/eval_R': 2.919999837875366, 'steps': 23592960}
+{'sec': 7.521174907684326, 'minatar-breakout/eval_R': 3.0799999237060547, 'steps': 26214400}
+{'sec': 8.272334814071655, 'minatar-breakout/eval_R': 3.0899999141693115, 'steps': 28835840}
+{'sec': 9.023651838302612, 'minatar-breakout/eval_R': 3.9700000286102295, 'steps': 31457280}
+{'sec': 9.775707483291626, 'minatar-breakout/eval_R': 4.019999980926514, 'steps': 34078720}
+{'sec': 10.526700973510742, 'minatar-breakout/eval_R': 4.059999942779541, 'steps': 36700160}
+{'sec': 11.279696464538574, 'minatar-breakout/eval_R': 3.8999998569488525, 'steps': 39321600}
+{'sec': 12.031439542770386, 'minatar-breakout/eval_R': 4.659999847412109, 'steps': 41943040}
+{'sec': 12.783281326293945, 'minatar-breakout/eval_R': 5.339999675750732, 'steps': 44564480}
+{'sec': 13.53450894355774, 'minatar-breakout/eval_R': 5.389999866485596, 'steps': 47185920}
+{'sec': 14.28551721572876, 'minatar-breakout/eval_R': 6.309999942779541, 'steps': 49807360}
+{'sec': 15.036466121673584, 'minatar-breakout/eval_R': 5.650000095367432, 'steps': 52428800}
+{'sec': 15.789278268814087, 'minatar-breakout/eval_R': 5.829999923706055, 'steps': 55050240}
+{'sec': 16.541593074798584, 'minatar-breakout/eval_R': 6.5, 'steps': 57671680}
+{'sec': 17.293527364730835, 'minatar-breakout/eval_R': 6.980000019073486, 'steps': 60293120}
+{'sec': 18.044553995132446, 'minatar-breakout/eval_R': 6.359999656677246, 'steps': 62914560}
+{'sec': 18.796743869781494, 'minatar-breakout/eval_R': 7.329999923706055, 'steps': 65536000}
+{'sec': 19.549460887908936, 'minatar-breakout/eval_R': 8.369999885559082, 'steps': 68157440}
+{'sec': 20.30158019065857, 'minatar-breakout/eval_R': 8.559999465942383, 'steps': 70778880}
+{'sec': 21.054218292236328, 'minatar-breakout/eval_R': 8.399999618530273, 'steps': 73400320}
+{'sec': 21.805232048034668, 'minatar-breakout/eval_R': 9.84999942779541, 'steps': 76021760}
+{'sec': 22.557291269302368, 'minatar-breakout/eval_R': 9.149999618530273, 'steps': 78643200}
+{'sec': 23.30853581428528, 'minatar-breakout/eval_R': 10.279999732971191, 'steps': 81264640}
+{'sec': 24.061330556869507, 'minatar-breakout/eval_R': 10.59999942779541, 'steps': 83886080}
+{'sec': 24.813934564590454, 'minatar-breakout/eval_R': 10.449999809265137, 'steps': 86507520}
+{'sec': 25.565231561660767, 'minatar-breakout/eval_R': 11.09000015258789, 'steps': 89128960}
+{'sec': 26.317418575286865, 'minatar-breakout/eval_R': 11.819999694824219, 'steps': 91750400}
+{'sec': 27.069812774658203, 'minatar-breakout/eval_R': 12.25999927520752, 'steps': 94371840}
+{'sec': 27.82202959060669, 'minatar-breakout/eval_R': 11.679999351501465, 'steps': 96993280}
+{'sec': 28.57524847984314, 'minatar-breakout/eval_R': 13.25, 'steps': 99614720}
+{'sec': 29.329100847244263, 'minatar-breakout/eval_R': 12.059999465942383, 'steps': 102236160}
+{'sec': 30.08103895187378, 'minatar-breakout/eval_R': 12.829999923706055, 'steps': 104857600}
+{'sec': 30.833040475845337, 'minatar-breakout/eval_R': 13.609999656677246, 'steps': 107479040}
+{'sec': 31.58515501022339, 'minatar-breakout/eval_R': 13.50999927520752, 'steps': 110100480}
+{'sec': 32.33705925941467, 'minatar-breakout/eval_R': 15.399999618530273, 'steps': 112721920}
+{'sec': 33.08812737464905, 'minatar-breakout/eval_R': 14.289999961853027, 'steps': 115343360}
+{'sec': 33.841365575790405, 'minatar-breakout/eval_R': 15.40999984741211, 'steps': 117964800}
+{'sec': 34.592461347579956, 'minatar-breakout/eval_R': 14.299999237060547, 'steps': 120586240}
+{'sec': 35.34339690208435, 'minatar-breakout/eval_R': 14.839999198913574, 'steps': 123207680}
+{'sec': 36.09539580345154, 'minatar-breakout/eval_R': 14.75, 'steps': 125829120}
+{'sec': 36.84677481651306, 'minatar-breakout/eval_R': 16.350000381469727, 'steps': 128450560}
+{'sec': 37.598369121551514, 'minatar-breakout/eval_R': 16.139999389648438, 'steps': 131072000}
+{'sec': 38.350714445114136, 'minatar-breakout/eval_R': 17.15999984741211, 'steps': 133693440}
+{'sec': 39.10376238822937, 'minatar-breakout/eval_R': 16.020000457763672, 'steps': 136314880}
+{'sec': 39.85656785964966, 'minatar-breakout/eval_R': 16.989999771118164, 'steps': 138936320}
+{'sec': 40.6082079410553, 'minatar-breakout/eval_R': 15.619999885559082, 'steps': 141557760}
+{'sec': 41.360830783843994, 'minatar-breakout/eval_R': 18.229999542236328, 'steps': 144179200}
+{'sec': 42.11239695549011, 'minatar-breakout/eval_R': 17.94999885559082, 'steps': 146800640}
+{'sec': 42.86421346664429, 'minatar-breakout/eval_R': 16.81999969482422, 'steps': 149422080}
+{'sec': 43.6168794631958, 'minatar-breakout/eval_R': 17.389999389648438, 'steps': 152043520}
+{'sec': 44.36925768852234, 'minatar-breakout/eval_R': 17.69999885559082, 'steps': 154664960}
+{'sec': 45.12149786949158, 'minatar-breakout/eval_R': 19.139999389648438, 'steps': 157286400}
+{'sec': 45.874290227890015, 'minatar-breakout/eval_R': 19.31999969482422, 'steps': 159907840}
+{'sec': 46.62612223625183, 'minatar-breakout/eval_R': 18.43000030517578, 'steps': 162529280}
+{'sec': 47.37847566604614, 'minatar-breakout/eval_R': 18.60999870300293, 'steps': 165150720}
+{'sec': 48.1308867931366, 'minatar-breakout/eval_R': 18.43000030517578, 'steps': 167772160}
+{'sec': 48.8822979927063, 'minatar-breakout/eval_R': 18.779998779296875, 'steps': 170393600}
+{'sec': 49.634687662124634, 'minatar-breakout/eval_R': 19.279998779296875, 'steps': 173015040}
+{'sec': 50.387465715408325, 'minatar-breakout/eval_R': 18.850000381469727, 'steps': 175636480}
+{'sec': 51.140891551971436, 'minatar-breakout/eval_R': 22.969999313354492, 'steps': 178257920}
+{'sec': 51.892629861831665, 'minatar-breakout/eval_R': 22.850000381469727, 'steps': 180879360}
+{'sec': 52.64511442184448, 'minatar-breakout/eval_R': 19.649999618530273, 'steps': 183500800}
+{'sec': 53.396451234817505, 'minatar-breakout/eval_R': 18.389999389648438, 'steps': 186122240}
+{'sec': 54.14868760108948, 'minatar-breakout/eval_R': 19.35999870300293, 'steps': 188743680}
+{'sec': 54.900203227996826, 'minatar-breakout/eval_R': 22.84000015258789, 'steps': 191365120}
+{'sec': 55.65235257148743, 'minatar-breakout/eval_R': 21.0, 'steps': 193986560}
+{'sec': 56.404147148132324, 'minatar-breakout/eval_R': 19.459999084472656, 'steps': 196608000}
+{'sec': 57.157390832901, 'minatar-breakout/eval_R': 19.31999969482422, 'steps': 199229440}
+{'sec': 57.90940022468567, 'minatar-breakout/eval_R': 19.65999984741211, 'steps': 201850880}
+{'sec': 58.661848068237305, 'minatar-breakout/eval_R': 21.44999885559082, 'steps': 204472320}
+{'sec': 59.413453102111816, 'minatar-breakout/eval_R': 19.3799991607666, 'steps': 207093760}
+{'sec': 60.16590452194214, 'minatar-breakout/eval_R': 21.619998931884766, 'steps': 209715200}
+{'sec': 60.9170925617218, 'minatar-breakout/eval_R': 24.239999771118164, 'steps': 212336640}
+{'sec': 61.66925048828125, 'minatar-breakout/eval_R': 21.520000457763672, 'steps': 214958080}
+{'sec': 62.420615911483765, 'minatar-breakout/eval_R': 22.709999084472656, 'steps': 217579520}
+{'sec': 63.173110008239746, 'minatar-breakout/eval_R': 22.670000076293945, 'steps': 220200960}
+{'sec': 63.925238847732544, 'minatar-breakout/eval_R': 22.559999465942383, 'steps': 222822400}
+{'sec': 64.67754817008972, 'minatar-breakout/eval_R': 22.09000015258789, 'steps': 225443840}
+{'sec': 65.43001008033752, 'minatar-breakout/eval_R': 22.529998779296875, 'steps': 228065280}
+{'sec': 66.18146133422852, 'minatar-breakout/eval_R': 22.420000076293945, 'steps': 230686720}
+{'sec': 66.93418955802917, 'minatar-breakout/eval_R': 22.510000228881836, 'steps': 233308160}
+{'sec': 67.6862690448761, 'minatar-breakout/eval_R': 22.029998779296875, 'steps': 235929600}
+{'sec': 68.43776392936707, 'minatar-breakout/eval_R': 22.029998779296875, 'steps': 238551040}
+{'sec': 69.19196510314941, 'minatar-breakout/eval_R': 22.1299991607666, 'steps': 241172480}
+{'sec': 69.94318771362305, 'minatar-breakout/eval_R': 21.770000457763672, 'steps': 243793920}
+{'sec': 70.6969690322876, 'minatar-breakout/eval_R': 23.639999389648438, 'steps': 246415360}
+{'sec': 71.44933080673218, 'minatar-breakout/eval_R': 24.69999885559082, 'steps': 249036800}
+{'sec': 72.20301246643066, 'minatar-breakout/eval_R': 25.3799991607666, 'steps': 251658240}
+{'sec': 72.95463228225708, 'minatar-breakout/eval_R': 21.8799991607666, 'steps': 254279680}
+{'sec': 73.70875978469849, 'minatar-breakout/eval_R': 23.529998779296875, 'steps': 256901120}
+{'sec': 74.46008396148682, 'minatar-breakout/eval_R': 22.65999984741211, 'steps': 259522560}
+{'sec': 75.21272683143616, 'minatar-breakout/eval_R': 24.1299991607666, 'steps': 262144000}
+{'sec': 75.96513652801514, 'minatar-breakout/eval_R': 23.869998931884766, 'steps': 264765440}
+{'sec': 76.7177574634552, 'minatar-breakout/eval_R': 24.549999237060547, 'steps': 267386880}
+{'sec': 77.46996021270752, 'minatar-breakout/eval_R': 21.939998626708984, 'steps': 270008320}
+{'sec': 78.22193741798401, 'minatar-breakout/eval_R': 23.329999923706055, 'steps': 272629760}
+{'sec': 78.97423982620239, 'minatar-breakout/eval_R': 22.479999542236328, 'steps': 275251200}
+{'sec': 79.72699499130249, 'minatar-breakout/eval_R': 26.1299991607666, 'steps': 277872640}
+{'sec': 80.47967410087585, 'minatar-breakout/eval_R': 23.100000381469727, 'steps': 280494080}
+{'sec': 81.2320384979248, 'minatar-breakout/eval_R': 25.25, 'steps': 283115520}
+{'sec': 81.98468327522278, 'minatar-breakout/eval_R': 23.76999855041504, 'steps': 285736960}
+{'sec': 82.7363920211792, 'minatar-breakout/eval_R': 24.84000015258789, 'steps': 288358400}
+{'sec': 83.48899149894714, 'minatar-breakout/eval_R': 22.56999969482422, 'steps': 290979840}
+{'sec': 84.24145817756653, 'minatar-breakout/eval_R': 25.309999465942383, 'steps': 293601280}
+{'sec': 84.99411511421204, 'minatar-breakout/eval_R': 25.529998779296875, 'steps': 296222720}
+{'sec': 85.7455587387085, 'minatar-breakout/eval_R': 24.459999084472656, 'steps': 298844160}
+{'sec': 86.49690079689026, 'minatar-breakout/eval_R': 26.670000076293945, 'steps': 301465600}
+{'sec': 87.24845910072327, 'minatar-breakout/eval_R': 27.849998474121094, 'steps': 304087040}
+{'sec': 88.00174593925476, 'minatar-breakout/eval_R': 24.479999542236328, 'steps': 306708480}
+{'sec': 88.75345492362976, 'minatar-breakout/eval_R': 23.829999923706055, 'steps': 309329920}
+{'sec': 89.5060293674469, 'minatar-breakout/eval_R': 23.60999870300293, 'steps': 311951360}
+{'sec': 90.25737428665161, 'minatar-breakout/eval_R': 22.75, 'steps': 314572800}
+{'sec': 91.00863885879517, 'minatar-breakout/eval_R': 25.01999855041504, 'steps': 317194240}
+{'sec': 91.7609179019928, 'minatar-breakout/eval_R': 25.459999084472656, 'steps': 319815680}
+{'sec': 92.5134449005127, 'minatar-breakout/eval_R': 27.649999618530273, 'steps': 322437120}
+{'sec': 93.26594138145447, 'minatar-breakout/eval_R': 24.75, 'steps': 325058560}
+{'sec': 94.0184576511383, 'minatar-breakout/eval_R': 23.34000015258789, 'steps': 327680000}
+{'sec': 94.76979970932007, 'minatar-breakout/eval_R': 25.459999084472656, 'steps': 330301440}
+{'sec': 95.52227306365967, 'minatar-breakout/eval_R': 24.369998931884766, 'steps': 332922880}
+{'sec': 96.27377104759216, 'minatar-breakout/eval_R': 25.51999855041504, 'steps': 335544320}
+{'sec': 97.02680206298828, 'minatar-breakout/eval_R': 23.100000381469727, 'steps': 338165760}
+{'sec': 97.77805995941162, 'minatar-breakout/eval_R': 26.309999465942383, 'steps': 340787200}
+{'sec': 98.53087258338928, 'minatar-breakout/eval_R': 28.349998474121094, 'steps': 343408640}
+{'sec': 99.28262066841125, 'minatar-breakout/eval_R': 25.229999542236328, 'steps': 346030080}
+{'sec': 100.03404951095581, 'minatar-breakout/eval_R': 25.69999885559082, 'steps': 348651520}
+{'sec': 100.78544640541077, 'minatar-breakout/eval_R': 27.149999618530273, 'steps': 351272960}
+{'sec': 101.53800821304321, 'minatar-breakout/eval_R': 27.0, 'steps': 353894400}
+{'sec': 102.28928303718567, 'minatar-breakout/eval_R': 26.059999465942383, 'steps': 356515840}
+{'sec': 103.04103016853333, 'minatar-breakout/eval_R': 22.889999389648438, 'steps': 359137280}
+{'sec': 103.79365921020508, 'minatar-breakout/eval_R': 26.15999984741211, 'steps': 361758720}
+{'sec': 104.54476189613342, 'minatar-breakout/eval_R': 28.139999389648438, 'steps': 364380160}
+{'sec': 105.29702305793762, 'minatar-breakout/eval_R': 27.369998931884766, 'steps': 367001600}
+{'sec': 106.05035924911499, 'minatar-breakout/eval_R': 27.53999900817871, 'steps': 369623040}
+{'sec': 106.80175590515137, 'minatar-breakout/eval_R': 28.049999237060547, 'steps': 372244480}
+{'sec': 107.55417013168335, 'minatar-breakout/eval_R': 24.969999313354492, 'steps': 374865920}
+{'sec': 108.30596208572388, 'minatar-breakout/eval_R': 29.03999900817871, 'steps': 377487360}
+{'sec': 109.05874800682068, 'minatar-breakout/eval_R': 26.959999084472656, 'steps': 380108800}
+{'sec': 109.81036925315857, 'minatar-breakout/eval_R': 24.619998931884766, 'steps': 382730240}
+{'sec': 110.56300592422485, 'minatar-breakout/eval_R': 26.459999084472656, 'steps': 385351680}
+{'sec': 111.31447052955627, 'minatar-breakout/eval_R': 27.229999542236328, 'steps': 387973120}
+{'sec': 112.06572437286377, 'minatar-breakout/eval_R': 24.850000381469727, 'steps': 390594560}
+{'sec': 112.81837463378906, 'minatar-breakout/eval_R': 26.619998931884766, 'steps': 393216000}
+{'sec': 113.56963205337524, 'minatar-breakout/eval_R': 24.469999313354492, 'steps': 395837440}
+{'sec': 114.32184481620789, 'minatar-breakout/eval_R': 25.59000015258789, 'steps': 398458880}
+{'sec': 115.07493925094604, 'minatar-breakout/eval_R': 26.59000015258789, 'steps': 401080320}
+{'sec': 115.82786178588867, 'minatar-breakout/eval_R': 27.479999542236328, 'steps': 403701760}
+{'sec': 116.57998657226562, 'minatar-breakout/eval_R': 27.28999900817871, 'steps': 406323200}
+{'sec': 117.33186912536621, 'minatar-breakout/eval_R': 29.469999313354492, 'steps': 408944640}
+{'sec': 118.08439660072327, 'minatar-breakout/eval_R': 26.479999542236328, 'steps': 411566080}
+{'sec': 118.83537578582764, 'minatar-breakout/eval_R': 25.09000015258789, 'steps': 414187520}
+{'sec': 119.58819198608398, 'minatar-breakout/eval_R': 25.75, 'steps': 416808960}
+{'sec': 120.33927130699158, 'minatar-breakout/eval_R': 27.889999389648438, 'steps': 419430400}
+{'sec': 121.09049963951111, 'minatar-breakout/eval_R': 27.599998474121094, 'steps': 422051840}
+{'sec': 121.84224843978882, 'minatar-breakout/eval_R': 29.10999870300293, 'steps': 424673280}
+{'sec': 122.59415245056152, 'minatar-breakout/eval_R': 27.459999084472656, 'steps': 427294720}
+{'sec': 123.3450391292572, 'minatar-breakout/eval_R': 27.849998474121094, 'steps': 429916160}
+{'sec': 124.09763193130493, 'minatar-breakout/eval_R': 26.309999465942383, 'steps': 432537600}
+{'sec': 124.84885120391846, 'minatar-breakout/eval_R': 26.6299991607666, 'steps': 435159040}
+{'sec': 125.60038900375366, 'minatar-breakout/eval_R': 27.85999870300293, 'steps': 437780480}
+{'sec': 126.3527615070343, 'minatar-breakout/eval_R': 31.939998626708984, 'steps': 440401920}
+{'sec': 127.10501098632812, 'minatar-breakout/eval_R': 27.0, 'steps': 443023360}
+{'sec': 127.85736966133118, 'minatar-breakout/eval_R': 28.809999465942383, 'steps': 445644800}
+{'sec': 128.60914492607117, 'minatar-breakout/eval_R': 27.239999771118164, 'steps': 448266240}
+{'sec': 129.36079454421997, 'minatar-breakout/eval_R': 27.849998474121094, 'steps': 450887680}
+{'sec': 130.11281275749207, 'minatar-breakout/eval_R': 26.90999984741211, 'steps': 453509120}
+{'sec': 130.86451959609985, 'minatar-breakout/eval_R': 29.939998626708984, 'steps': 456130560}
+{'sec': 131.61696648597717, 'minatar-breakout/eval_R': 28.559999465942383, 'steps': 458752000}
+{'sec': 132.36825728416443, 'minatar-breakout/eval_R': 30.65999984741211, 'steps': 461373440}
+{'sec': 133.12097597122192, 'minatar-breakout/eval_R': 29.149999618530273, 'steps': 463994880}
+{'sec': 133.873281955719, 'minatar-breakout/eval_R': 29.6299991607666, 'steps': 466616320}
+{'sec': 134.6251299381256, 'minatar-breakout/eval_R': 28.689998626708984, 'steps': 469237760}
+{'sec': 135.37687039375305, 'minatar-breakout/eval_R': 28.76999855041504, 'steps': 471859200}
+{'sec': 136.12920761108398, 'minatar-breakout/eval_R': 29.420000076293945, 'steps': 474480640}
+{'sec': 136.88066720962524, 'minatar-breakout/eval_R': 30.689998626708984, 'steps': 477102080}
+{'sec': 137.63251280784607, 'minatar-breakout/eval_R': 27.329999923706055, 'steps': 479723520}
+{'sec': 138.38498187065125, 'minatar-breakout/eval_R': 27.349998474121094, 'steps': 482344960}
+{'sec': 139.1369547843933, 'minatar-breakout/eval_R': 28.35999870300293, 'steps': 484966400}
+{'sec': 139.8882119655609, 'minatar-breakout/eval_R': 33.61000061035156, 'steps': 487587840}
+{'sec': 140.6405246257782, 'minatar-breakout/eval_R': 28.34000015258789, 'steps': 490209280}
+{'sec': 141.39159989356995, 'minatar-breakout/eval_R': 28.5, 'steps': 492830720}
+{'sec': 142.14423966407776, 'minatar-breakout/eval_R': 30.459999084472656, 'steps': 495452160}
+{'sec': 142.89643025398254, 'minatar-breakout/eval_R': 31.869998931884766, 'steps': 498073600}
+{'sec': 143.6489851474762, 'minatar-breakout/eval_R': 30.03999900817871, 'steps': 500695040}
+{'sec': 144.40037560462952, 'minatar-breakout/eval_R': 28.68000030517578, 'steps': 503316480}
+{'sec': 145.15193939208984, 'minatar-breakout/eval_R': 29.510000228881836, 'steps': 505937920}
+{'sec': 145.9041666984558, 'minatar-breakout/eval_R': 30.3799991607666, 'steps': 508559360}
+{'sec': 146.65576267242432, 'minatar-breakout/eval_R': 30.599998474121094, 'steps': 511180800}
+{'sec': 147.40766668319702, 'minatar-breakout/eval_R': 31.389999389648438, 'steps': 513802240}
+{'sec': 148.15902876853943, 'minatar-breakout/eval_R': 26.869998931884766, 'steps': 516423680}
+{'sec': 148.91145944595337, 'minatar-breakout/eval_R': 30.28999900817871, 'steps': 519045120}
+{'sec': 149.66371846199036, 'minatar-breakout/eval_R': 29.920000076293945, 'steps': 521666560}
+{'sec': 150.41585850715637, 'minatar-breakout/eval_R': 30.170000076293945, 'steps': 524288000}
+{'sec': 151.16739964485168, 'minatar-breakout/eval_R': 27.119998931884766, 'steps': 526909440}
+{'sec': 151.91987538337708, 'minatar-breakout/eval_R': 31.31999969482422, 'steps': 529530880}
+{'sec': 152.67295813560486, 'minatar-breakout/eval_R': 31.31999969482422, 'steps': 532152320}
+{'sec': 153.42470598220825, 'minatar-breakout/eval_R': 30.35999870300293, 'steps': 534773760}
+{'sec': 154.17682075500488, 'minatar-breakout/eval_R': 31.719999313354492, 'steps': 537395200}
+{'sec': 154.92921590805054, 'minatar-breakout/eval_R': 31.599998474121094, 'steps': 540016640}
+{'sec': 155.68153047561646, 'minatar-breakout/eval_R': 32.369998931884766, 'steps': 542638080}
+{'sec': 156.43264985084534, 'minatar-breakout/eval_R': 32.11000061035156, 'steps': 545259520}
+{'sec': 157.18517351150513, 'minatar-breakout/eval_R': 29.25, 'steps': 547880960}
+{'sec': 157.93663811683655, 'minatar-breakout/eval_R': 31.34000015258789, 'steps': 550502400}
+{'sec': 158.68795657157898, 'minatar-breakout/eval_R': 29.959999084472656, 'steps': 553123840}
+{'sec': 159.44013667106628, 'minatar-breakout/eval_R': 33.81999969482422, 'steps': 555745280}
+{'sec': 160.19146823883057, 'minatar-breakout/eval_R': 30.920000076293945, 'steps': 558366720}
+{'sec': 160.94292616844177, 'minatar-breakout/eval_R': 31.139999389648438, 'steps': 560988160}
+{'sec': 161.6945095062256, 'minatar-breakout/eval_R': 34.880001068115234, 'steps': 563609600}
+{'sec': 162.44567346572876, 'minatar-breakout/eval_R': 30.25, 'steps': 566231040}
+{'sec': 163.19686889648438, 'minatar-breakout/eval_R': 31.28999900817871, 'steps': 568852480}
+{'sec': 163.94913363456726, 'minatar-breakout/eval_R': 32.59000015258789, 'steps': 571473920}
+{'sec': 164.70162796974182, 'minatar-breakout/eval_R': 32.209999084472656, 'steps': 574095360}
+{'sec': 165.4537467956543, 'minatar-breakout/eval_R': 30.619998931884766, 'steps': 576716800}
+{'sec': 166.20647525787354, 'minatar-breakout/eval_R': 31.459999084472656, 'steps': 579338240}
+{'sec': 166.9578492641449, 'minatar-breakout/eval_R': 30.25, 'steps': 581959680}
+{'sec': 167.70909667015076, 'minatar-breakout/eval_R': 32.029998779296875, 'steps': 584581120}
+{'sec': 168.4616494178772, 'minatar-breakout/eval_R': 32.16999816894531, 'steps': 587202560}
+{'sec': 169.213237285614, 'minatar-breakout/eval_R': 33.099998474121094, 'steps': 589824000}
+{'sec': 169.96627974510193, 'minatar-breakout/eval_R': 33.05999755859375, 'steps': 592445440}
+{'sec': 170.71805500984192, 'minatar-breakout/eval_R': 31.309999465942383, 'steps': 595066880}
+{'sec': 171.46974635124207, 'minatar-breakout/eval_R': 31.309999465942383, 'steps': 597688320}
+{'sec': 172.22206211090088, 'minatar-breakout/eval_R': 29.06999969482422, 'steps': 600309760}
+{'sec': 172.97372245788574, 'minatar-breakout/eval_R': 33.630001068115234, 'steps': 602931200}
+{'sec': 173.72630620002747, 'minatar-breakout/eval_R': 30.709999084472656, 'steps': 605552640}
+{'sec': 174.4776849746704, 'minatar-breakout/eval_R': 35.93000030517578, 'steps': 608174080}
+{'sec': 175.23007798194885, 'minatar-breakout/eval_R': 31.69999885559082, 'steps': 610795520}
+{'sec': 175.98171997070312, 'minatar-breakout/eval_R': 31.25, 'steps': 613416960}
+{'sec': 176.7333586215973, 'minatar-breakout/eval_R': 30.369998931884766, 'steps': 616038400}
+{'sec': 177.4844515323639, 'minatar-breakout/eval_R': 34.849998474121094, 'steps': 618659840}
+{'sec': 178.23717594146729, 'minatar-breakout/eval_R': 35.63999938964844, 'steps': 621281280}
+{'sec': 178.98943567276, 'minatar-breakout/eval_R': 32.57999801635742, 'steps': 623902720}
+{'sec': 179.7415590286255, 'minatar-breakout/eval_R': 35.63999938964844, 'steps': 626524160}
+{'sec': 180.49315547943115, 'minatar-breakout/eval_R': 38.07999801635742, 'steps': 629145600}
+{'sec': 181.2456250190735, 'minatar-breakout/eval_R': 33.41999816894531, 'steps': 631767040}
+{'sec': 181.99735593795776, 'minatar-breakout/eval_R': 35.439998626708984, 'steps': 634388480}
+{'sec': 182.74897503852844, 'minatar-breakout/eval_R': 32.54999923706055, 'steps': 637009920}
+{'sec': 183.50140619277954, 'minatar-breakout/eval_R': 34.439998626708984, 'steps': 639631360}
+{'sec': 184.25231790542603, 'minatar-breakout/eval_R': 33.689998626708984, 'steps': 642252800}
+{'sec': 185.0049765110016, 'minatar-breakout/eval_R': 36.849998474121094, 'steps': 644874240}
+{'sec': 185.86569499969482, 'minatar-breakout/eval_R': 33.38999938964844, 'steps': 647495680}
+{'sec': 186.61891317367554, 'minatar-breakout/eval_R': 32.2599983215332, 'steps': 650117120}
+{'sec': 187.37031316757202, 'minatar-breakout/eval_R': 32.63999938964844, 'steps': 652738560}
+{'sec': 188.12399792671204, 'minatar-breakout/eval_R': 33.32999801635742, 'steps': 655360000}
+{'sec': 188.87659573554993, 'minatar-breakout/eval_R': 35.84000015258789, 'steps': 657981440}
+{'sec': 189.6279685497284, 'minatar-breakout/eval_R': 33.61000061035156, 'steps': 660602880}
+{'sec': 190.37935781478882, 'minatar-breakout/eval_R': 33.029998779296875, 'steps': 663224320}
+{'sec': 191.13041925430298, 'minatar-breakout/eval_R': 32.43000030517578, 'steps': 665845760}
+{'sec': 191.88287115097046, 'minatar-breakout/eval_R': 32.05999755859375, 'steps': 668467200}
+{'sec': 192.63528561592102, 'minatar-breakout/eval_R': 32.86000061035156, 'steps': 671088640}
+{'sec': 193.38731932640076, 'minatar-breakout/eval_R': 32.86000061035156, 'steps': 673710080}
+{'sec': 194.13883590698242, 'minatar-breakout/eval_R': 33.63999938964844, 'steps': 676331520}
+{'sec': 194.89004802703857, 'minatar-breakout/eval_R': 35.54999923706055, 'steps': 678952960}
+{'sec': 195.64102625846863, 'minatar-breakout/eval_R': 36.689998626708984, 'steps': 681574400}
+{'sec': 196.3925108909607, 'minatar-breakout/eval_R': 34.75, 'steps': 684195840}
+{'sec': 197.14488339424133, 'minatar-breakout/eval_R': 37.55999755859375, 'steps': 686817280}
+{'sec': 197.8968026638031, 'minatar-breakout/eval_R': 35.15999984741211, 'steps': 689438720}
+{'sec': 198.64820384979248, 'minatar-breakout/eval_R': 37.98999786376953, 'steps': 692060160}
+{'sec': 199.3995213508606, 'minatar-breakout/eval_R': 33.90999984741211, 'steps': 694681600}
+{'sec': 200.15208530426025, 'minatar-breakout/eval_R': 33.04999923706055, 'steps': 697303040}
+{'sec': 200.90444326400757, 'minatar-breakout/eval_R': 33.59000015258789, 'steps': 699924480}
+{'sec': 201.6568717956543, 'minatar-breakout/eval_R': 30.779998779296875, 'steps': 702545920}
+{'sec': 202.40908455848694, 'minatar-breakout/eval_R': 32.77000045776367, 'steps': 705167360}
+{'sec': 203.1611361503601, 'minatar-breakout/eval_R': 33.43000030517578, 'steps': 707788800}
+{'sec': 203.91333723068237, 'minatar-breakout/eval_R': 39.22999954223633, 'steps': 710410240}
+{'sec': 204.6647675037384, 'minatar-breakout/eval_R': 33.98999786376953, 'steps': 713031680}
+{'sec': 205.41701889038086, 'minatar-breakout/eval_R': 39.46999740600586, 'steps': 715653120}
+{'sec': 206.17028141021729, 'minatar-breakout/eval_R': 41.07999801635742, 'steps': 718274560}
+{'sec': 206.92278242111206, 'minatar-breakout/eval_R': 36.04999923706055, 'steps': 720896000}
+{'sec': 207.6752965450287, 'minatar-breakout/eval_R': 38.34000015258789, 'steps': 723517440}
+{'sec': 208.42746257781982, 'minatar-breakout/eval_R': 36.869998931884766, 'steps': 726138880}
+{'sec': 209.17848539352417, 'minatar-breakout/eval_R': 34.05999755859375, 'steps': 728760320}
+{'sec': 209.9299077987671, 'minatar-breakout/eval_R': 35.2599983215332, 'steps': 731381760}
+{'sec': 210.68229913711548, 'minatar-breakout/eval_R': 36.20000076293945, 'steps': 734003200}
+{'sec': 211.4333553314209, 'minatar-breakout/eval_R': 35.61000061035156, 'steps': 736624640}
+{'sec': 212.1857295036316, 'minatar-breakout/eval_R': 37.52000045776367, 'steps': 739246080}
+{'sec': 212.93783164024353, 'minatar-breakout/eval_R': 39.65999984741211, 'steps': 741867520}
+{'sec': 213.6890470981598, 'minatar-breakout/eval_R': 37.349998474121094, 'steps': 744488960}
+{'sec': 214.4404194355011, 'minatar-breakout/eval_R': 42.369998931884766, 'steps': 747110400}
+{'sec': 215.1926383972168, 'minatar-breakout/eval_R': 39.32999801635742, 'steps': 749731840}
+{'sec': 215.94483399391174, 'minatar-breakout/eval_R': 38.55999755859375, 'steps': 752353280}
+{'sec': 216.69596815109253, 'minatar-breakout/eval_R': 34.040000915527344, 'steps': 754974720}
+{'sec': 217.44806838035583, 'minatar-breakout/eval_R': 42.68000030517578, 'steps': 757596160}
+{'sec': 218.19935059547424, 'minatar-breakout/eval_R': 37.529998779296875, 'steps': 760217600}
+{'sec': 218.95063638687134, 'minatar-breakout/eval_R': 39.61000061035156, 'steps': 762839040}
+{'sec': 219.70262336730957, 'minatar-breakout/eval_R': 38.43000030517578, 'steps': 765460480}
+{'sec': 220.45383954048157, 'minatar-breakout/eval_R': 43.77000045776367, 'steps': 768081920}
+{'sec': 221.20603775978088, 'minatar-breakout/eval_R': 39.88999938964844, 'steps': 770703360}
+{'sec': 221.95784330368042, 'minatar-breakout/eval_R': 39.05999755859375, 'steps': 773324800}
+{'sec': 222.70992398262024, 'minatar-breakout/eval_R': 37.32999801635742, 'steps': 775946240}
+{'sec': 223.4626898765564, 'minatar-breakout/eval_R': 43.63999938964844, 'steps': 778567680}
+{'sec': 224.21483182907104, 'minatar-breakout/eval_R': 39.16999816894531, 'steps': 781189120}
+{'sec': 224.96690464019775, 'minatar-breakout/eval_R': 38.029998779296875, 'steps': 783810560}
+{'sec': 225.7189679145813, 'minatar-breakout/eval_R': 35.209999084472656, 'steps': 786432000}
+{'sec': 226.4700620174408, 'minatar-breakout/eval_R': 44.98999786376953, 'steps': 789053440}
+{'sec': 227.22271299362183, 'minatar-breakout/eval_R': 43.84000015258789, 'steps': 791674880}
+{'sec': 227.97396278381348, 'minatar-breakout/eval_R': 38.47999954223633, 'steps': 794296320}
+{'sec': 228.72533988952637, 'minatar-breakout/eval_R': 41.97999954223633, 'steps': 796917760}
+{'sec': 229.47743225097656, 'minatar-breakout/eval_R': 39.75, 'steps': 799539200}
+{'sec': 230.22977423667908, 'minatar-breakout/eval_R': 41.099998474121094, 'steps': 802160640}
+{'sec': 230.9815056324005, 'minatar-breakout/eval_R': 35.13999938964844, 'steps': 804782080}
+{'sec': 231.7336823940277, 'minatar-breakout/eval_R': 40.09000015258789, 'steps': 807403520}
+{'sec': 232.48679947853088, 'minatar-breakout/eval_R': 42.599998474121094, 'steps': 810024960}
+{'sec': 233.23809552192688, 'minatar-breakout/eval_R': 42.43000030517578, 'steps': 812646400}
+{'sec': 233.9903528690338, 'minatar-breakout/eval_R': 41.70000076293945, 'steps': 815267840}
+{'sec': 234.74278473854065, 'minatar-breakout/eval_R': 40.09000015258789, 'steps': 817889280}
+{'sec': 235.4943187236786, 'minatar-breakout/eval_R': 40.5, 'steps': 820510720}
+{'sec': 236.2466263771057, 'minatar-breakout/eval_R': 37.540000915527344, 'steps': 823132160}
+{'sec': 236.99831771850586, 'minatar-breakout/eval_R': 41.29999923706055, 'steps': 825753600}
+{'sec': 237.750661611557, 'minatar-breakout/eval_R': 41.39999771118164, 'steps': 828375040}
+{'sec': 238.50285387039185, 'minatar-breakout/eval_R': 41.91999816894531, 'steps': 830996480}
+{'sec': 239.2543923854828, 'minatar-breakout/eval_R': 42.349998474121094, 'steps': 833617920}
+{'sec': 240.00679802894592, 'minatar-breakout/eval_R': 40.0099983215332, 'steps': 836239360}
+{'sec': 240.75925755500793, 'minatar-breakout/eval_R': 43.93000030517578, 'steps': 838860800}
+{'sec': 241.51034665107727, 'minatar-breakout/eval_R': 38.84000015258789, 'steps': 841482240}
+{'sec': 242.2627227306366, 'minatar-breakout/eval_R': 41.91999816894531, 'steps': 844103680}
+{'sec': 243.01387763023376, 'minatar-breakout/eval_R': 43.0, 'steps': 846725120}
+{'sec': 243.76577806472778, 'minatar-breakout/eval_R': 41.939998626708984, 'steps': 849346560}
+{'sec': 244.51672196388245, 'minatar-breakout/eval_R': 36.96999740600586, 'steps': 851968000}
+{'sec': 245.268807888031, 'minatar-breakout/eval_R': 41.29999923706055, 'steps': 854589440}
+{'sec': 246.02027678489685, 'minatar-breakout/eval_R': 44.7599983215332, 'steps': 857210880}
+{'sec': 246.7721450328827, 'minatar-breakout/eval_R': 48.0, 'steps': 859832320}
+{'sec': 247.5236849784851, 'minatar-breakout/eval_R': 40.09000015258789, 'steps': 862453760}
+{'sec': 248.275949716568, 'minatar-breakout/eval_R': 41.040000915527344, 'steps': 865075200}
+{'sec': 249.02821230888367, 'minatar-breakout/eval_R': 38.07999801635742, 'steps': 867696640}
+{'sec': 249.78007531166077, 'minatar-breakout/eval_R': 46.86000061035156, 'steps': 870318080}
+{'sec': 250.5329728126526, 'minatar-breakout/eval_R': 46.64999771118164, 'steps': 872939520}
+{'sec': 251.28517317771912, 'minatar-breakout/eval_R': 47.689998626708984, 'steps': 875560960}
+{'sec': 252.0372290611267, 'minatar-breakout/eval_R': 43.91999816894531, 'steps': 878182400}
+{'sec': 252.78831791877747, 'minatar-breakout/eval_R': 45.12999725341797, 'steps': 880803840}
+{'sec': 253.54073333740234, 'minatar-breakout/eval_R': 44.439998626708984, 'steps': 883425280}
+{'sec': 254.29259777069092, 'minatar-breakout/eval_R': 44.93000030517578, 'steps': 886046720}
+{'sec': 255.04487943649292, 'minatar-breakout/eval_R': 50.05999755859375, 'steps': 888668160}
+{'sec': 255.7968761920929, 'minatar-breakout/eval_R': 40.79999923706055, 'steps': 891289600}
+{'sec': 256.5504457950592, 'minatar-breakout/eval_R': 48.47999954223633, 'steps': 893911040}
+{'sec': 257.3025939464569, 'minatar-breakout/eval_R': 47.09000015258789, 'steps': 896532480}
+{'sec': 258.05632615089417, 'minatar-breakout/eval_R': 49.439998626708984, 'steps': 899153920}
+{'sec': 258.80918431282043, 'minatar-breakout/eval_R': 53.14999771118164, 'steps': 901775360}
+{'sec': 259.56246733665466, 'minatar-breakout/eval_R': 56.96999740600586, 'steps': 904396800}
+{'sec': 260.31582164764404, 'minatar-breakout/eval_R': 45.40999984741211, 'steps': 907018240}
+{'sec': 261.06856417655945, 'minatar-breakout/eval_R': 47.78999710083008, 'steps': 909639680}
+{'sec': 261.8215413093567, 'minatar-breakout/eval_R': 50.599998474121094, 'steps': 912261120}
+{'sec': 262.5745553970337, 'minatar-breakout/eval_R': 45.7599983215332, 'steps': 914882560}
+{'sec': 263.32757902145386, 'minatar-breakout/eval_R': 45.689998626708984, 'steps': 917504000}
+{'sec': 264.07892394065857, 'minatar-breakout/eval_R': 53.07999801635742, 'steps': 920125440}
+{'sec': 264.83177614212036, 'minatar-breakout/eval_R': 43.86000061035156, 'steps': 922746880}
+{'sec': 265.58391427993774, 'minatar-breakout/eval_R': 47.21999740600586, 'steps': 925368320}
+{'sec': 266.33675503730774, 'minatar-breakout/eval_R': 45.82999801635742, 'steps': 927989760}
+{'sec': 267.08867263793945, 'minatar-breakout/eval_R': 44.619998931884766, 'steps': 930611200}
+{'sec': 267.8411259651184, 'minatar-breakout/eval_R': 47.79999923706055, 'steps': 933232640}
+{'sec': 268.59419441223145, 'minatar-breakout/eval_R': 53.40999984741211, 'steps': 935854080}
+{'sec': 269.3451945781708, 'minatar-breakout/eval_R': 52.279998779296875, 'steps': 938475520}
+{'sec': 270.09723138809204, 'minatar-breakout/eval_R': 44.14999771118164, 'steps': 941096960}
+{'sec': 270.8489785194397, 'minatar-breakout/eval_R': 49.2599983215332, 'steps': 943718400}
+{'sec': 271.60180711746216, 'minatar-breakout/eval_R': 53.7599983215332, 'steps': 946339840}
+{'sec': 272.3536534309387, 'minatar-breakout/eval_R': 47.53999710083008, 'steps': 948961280}
+{'sec': 273.10541558265686, 'minatar-breakout/eval_R': 49.22999954223633, 'steps': 951582720}
+{'sec': 273.8578414916992, 'minatar-breakout/eval_R': 45.78999710083008, 'steps': 954204160}
+{'sec': 274.61140155792236, 'minatar-breakout/eval_R': 47.55999755859375, 'steps': 956825600}
+{'sec': 275.3636348247528, 'minatar-breakout/eval_R': 49.20000076293945, 'steps': 959447040}
+{'sec': 276.11563062667847, 'minatar-breakout/eval_R': 50.689998626708984, 'steps': 962068480}
+{'sec': 276.8684434890747, 'minatar-breakout/eval_R': 52.63999938964844, 'steps': 964689920}
+{'sec': 277.61974000930786, 'minatar-breakout/eval_R': 54.73999786376953, 'steps': 967311360}
+{'sec': 278.3709855079651, 'minatar-breakout/eval_R': 54.88999938964844, 'steps': 969932800}
+{'sec': 279.1226465702057, 'minatar-breakout/eval_R': 50.34000015258789, 'steps': 972554240}
+{'sec': 279.87533593177795, 'minatar-breakout/eval_R': 52.2599983215332, 'steps': 975175680}
+{'sec': 280.6279366016388, 'minatar-breakout/eval_R': 48.189998626708984, 'steps': 977797120}
+{'sec': 281.3805797100067, 'minatar-breakout/eval_R': 59.65999984741211, 'steps': 980418560}
+{'sec': 282.1319899559021, 'minatar-breakout/eval_R': 50.37999725341797, 'steps': 983040000}
+{'sec': 282.8845684528351, 'minatar-breakout/eval_R': 57.05999755859375, 'steps': 985661440}
+{'sec': 283.6376938819885, 'minatar-breakout/eval_R': 58.43000030517578, 'steps': 988282880}
+{'sec': 284.3889832496643, 'minatar-breakout/eval_R': 47.30999755859375, 'steps': 990904320}
+{'sec': 285.1421298980713, 'minatar-breakout/eval_R': 56.68000030517578, 'steps': 993525760}
+{'sec': 285.89357256889343, 'minatar-breakout/eval_R': 45.849998474121094, 'steps': 996147200}
+{'sec': 286.6456723213196, 'minatar-breakout/eval_R': 52.47999954223633, 'steps': 998768640}
+{'sec': 287.39683771133423, 'minatar-breakout/eval_R': 52.53999710083008, 'steps': 1001390080}
+{'sec': 288.14939856529236, 'minatar-breakout/eval_R': 56.71999740600586, 'steps': 1004011520}
+{'sec': 288.9015054702759, 'minatar-breakout/eval_R': 62.27000045776367, 'steps': 1006632960}
+{'sec': 289.6537046432495, 'minatar-breakout/eval_R': 48.869998931884766, 'steps': 1009254400}
+{'sec': 290.4058759212494, 'minatar-breakout/eval_R': 59.46999740600586, 'steps': 1011875840}
+{'sec': 291.15874576568604, 'minatar-breakout/eval_R': 45.96999740600586, 'steps': 1014497280}
+{'sec': 291.91231751441956, 'minatar-breakout/eval_R': 59.849998474121094, 'steps': 1017118720}
+{'sec': 292.66355991363525, 'minatar-breakout/eval_R': 60.02000045776367, 'steps': 1019740160}
+{'sec': 293.4148471355438, 'minatar-breakout/eval_R': 51.72999954223633, 'steps': 1022361600}
+{'sec': 294.1669671535492, 'minatar-breakout/eval_R': 48.5, 'steps': 1024983040}
+{'sec': 294.91899490356445, 'minatar-breakout/eval_R': 58.94999694824219, 'steps': 1027604480}
+{'sec': 295.6713583469391, 'minatar-breakout/eval_R': 55.68000030517578, 'steps': 1030225920}
+{'sec': 296.42238116264343, 'minatar-breakout/eval_R': 62.72999954223633, 'steps': 1032847360}
+{'sec': 297.1742401123047, 'minatar-breakout/eval_R': 58.369998931884766, 'steps': 1035468800}
+{'sec': 297.92716670036316, 'minatar-breakout/eval_R': 56.61000061035156, 'steps': 1038090240}
+{'sec': 298.6792194843292, 'minatar-breakout/eval_R': 55.02000045776367, 'steps': 1040711680}
+{'sec': 299.43133425712585, 'minatar-breakout/eval_R': 49.40999984741211, 'steps': 1043333120}
+{'sec': 300.1829526424408, 'minatar-breakout/eval_R': 59.25, 'steps': 1045954560}
+{'sec': 300.93417835235596, 'minatar-breakout/eval_R': 67.47000122070312, 'steps': 1048576000}
+{'sec': 301.68728017807007, 'minatar-breakout/eval_R': 59.07999801635742, 'steps': 1051197440}
+{'sec': 302.43875885009766, 'minatar-breakout/eval_R': 57.31999969482422, 'steps': 1053818880}
+{'sec': 303.1899948120117, 'minatar-breakout/eval_R': 53.13999938964844, 'steps': 1056440320}
+{'sec': 303.94137024879456, 'minatar-breakout/eval_R': 54.94999694824219, 'steps': 1059061760}
+{'sec': 304.69351983070374, 'minatar-breakout/eval_R': 60.64999771118164, 'steps': 1061683200}
+{'sec': 305.4454560279846, 'minatar-breakout/eval_R': 59.689998626708984, 'steps': 1064304640}
+{'sec': 306.1966302394867, 'minatar-breakout/eval_R': 55.61000061035156, 'steps': 1066926080}
+{'sec': 306.94892740249634, 'minatar-breakout/eval_R': 63.96999740600586, 'steps': 1069547520}
+{'sec': 307.7006530761719, 'minatar-breakout/eval_R': 55.39999771118164, 'steps': 1072168960}
+{'sec': 308.45322275161743, 'minatar-breakout/eval_R': 58.07999801635742, 'steps': 1074790400}
+{'sec': 309.2046322822571, 'minatar-breakout/eval_R': 70.51000213623047, 'steps': 1077411840}
+{'sec': 309.95593452453613, 'minatar-breakout/eval_R': 58.279998779296875, 'steps': 1080033280}
+{'sec': 310.7075078487396, 'minatar-breakout/eval_R': 52.28999710083008, 'steps': 1082654720}
+{'sec': 311.4599645137787, 'minatar-breakout/eval_R': 56.62999725341797, 'steps': 1085276160}
+{'sec': 312.21209144592285, 'minatar-breakout/eval_R': 57.31999969482422, 'steps': 1087897600}
+{'sec': 312.96365189552307, 'minatar-breakout/eval_R': 59.40999984741211, 'steps': 1090519040}
+{'sec': 313.71534848213196, 'minatar-breakout/eval_R': 57.709999084472656, 'steps': 1093140480}
+{'sec': 314.46668457984924, 'minatar-breakout/eval_R': 52.05999755859375, 'steps': 1095761920}
+{'sec': 315.2198898792267, 'minatar-breakout/eval_R': 62.06999969482422, 'steps': 1098383360}
+{'sec': 315.9725842475891, 'minatar-breakout/eval_R': 65.48999786376953, 'steps': 1101004800}
+{'sec': 316.7247836589813, 'minatar-breakout/eval_R': 59.46999740600586, 'steps': 1103626240}
+{'sec': 317.47737979888916, 'minatar-breakout/eval_R': 64.97000122070312, 'steps': 1106247680}
+{'sec': 318.22913432121277, 'minatar-breakout/eval_R': 59.05999755859375, 'steps': 1108869120}
+{'sec': 318.98039507865906, 'minatar-breakout/eval_R': 53.939998626708984, 'steps': 1111490560}
+{'sec': 319.7324380874634, 'minatar-breakout/eval_R': 58.66999816894531, 'steps': 1114112000}
+{'sec': 320.48479557037354, 'minatar-breakout/eval_R': 67.91999816894531, 'steps': 1116733440}
+{'sec': 321.23613834381104, 'minatar-breakout/eval_R': 67.81999969482422, 'steps': 1119354880}
+{'sec': 321.98761677742004, 'minatar-breakout/eval_R': 56.87999725341797, 'steps': 1121976320}
+{'sec': 322.740517616272, 'minatar-breakout/eval_R': 56.2599983215332, 'steps': 1124597760}
+{'sec': 323.49426078796387, 'minatar-breakout/eval_R': 65.01000213623047, 'steps': 1127219200}
+{'sec': 324.2461404800415, 'minatar-breakout/eval_R': 68.29000091552734, 'steps': 1129840640}
+{'sec': 324.9989619255066, 'minatar-breakout/eval_R': 66.3699951171875, 'steps': 1132462080}
+{'sec': 325.7512938976288, 'minatar-breakout/eval_R': 63.05999755859375, 'steps': 1135083520}
+{'sec': 326.5028111934662, 'minatar-breakout/eval_R': 65.44999694824219, 'steps': 1137704960}
+{'sec': 327.2554967403412, 'minatar-breakout/eval_R': 59.34000015258789, 'steps': 1140326400}
+{'sec': 328.00672602653503, 'minatar-breakout/eval_R': 60.65999984741211, 'steps': 1142947840}
+{'sec': 328.7579174041748, 'minatar-breakout/eval_R': 66.11000061035156, 'steps': 1145569280}
+{'sec': 329.5105330944061, 'minatar-breakout/eval_R': 49.80999755859375, 'steps': 1148190720}
+{'sec': 330.26216197013855, 'minatar-breakout/eval_R': 75.68999481201172, 'steps': 1150812160}
+{'sec': 331.01462984085083, 'minatar-breakout/eval_R': 65.72000122070312, 'steps': 1153433600}
+{'sec': 331.766188621521, 'minatar-breakout/eval_R': 62.41999816894531, 'steps': 1156055040}
+{'sec': 332.5185616016388, 'minatar-breakout/eval_R': 60.07999801635742, 'steps': 1158676480}
+{'sec': 333.2700436115265, 'minatar-breakout/eval_R': 57.78999710083008, 'steps': 1161297920}
+{'sec': 334.02225494384766, 'minatar-breakout/eval_R': 63.64999771118164, 'steps': 1163919360}
+{'sec': 334.77508640289307, 'minatar-breakout/eval_R': 65.6199951171875, 'steps': 1166540800}
+{'sec': 335.528000831604, 'minatar-breakout/eval_R': 67.87999725341797, 'steps': 1169162240}
+{'sec': 336.2795572280884, 'minatar-breakout/eval_R': 66.72000122070312, 'steps': 1171783680}
+{'sec': 337.0322871208191, 'minatar-breakout/eval_R': 66.33999633789062, 'steps': 1174405120}
+{'sec': 337.78394651412964, 'minatar-breakout/eval_R': 67.6500015258789, 'steps': 1177026560}
+{'sec': 338.5362756252289, 'minatar-breakout/eval_R': 72.93999481201172, 'steps': 1179648000}
+{'sec': 339.2886154651642, 'minatar-breakout/eval_R': 74.0, 'steps': 1182269440}
+{'sec': 340.0405421257019, 'minatar-breakout/eval_R': 54.709999084472656, 'steps': 1184890880}
+{'sec': 340.79366183280945, 'minatar-breakout/eval_R': 63.2599983215332, 'steps': 1187512320}
+{'sec': 341.54590249061584, 'minatar-breakout/eval_R': 65.30999755859375, 'steps': 1190133760}
+{'sec': 342.2973372936249, 'minatar-breakout/eval_R': 69.66999816894531, 'steps': 1192755200}
+{'sec': 343.05009412765503, 'minatar-breakout/eval_R': 74.01000213623047, 'steps': 1195376640}
+{'sec': 343.80179595947266, 'minatar-breakout/eval_R': 63.8599967956543, 'steps': 1197998080}
+{'sec': 344.5542232990265, 'minatar-breakout/eval_R': 69.95999908447266, 'steps': 1200619520}
+{'sec': 345.3072290420532, 'minatar-breakout/eval_R': 67.18999481201172, 'steps': 1203240960}
+{'sec': 346.06002044677734, 'minatar-breakout/eval_R': 78.13999938964844, 'steps': 1205862400}
+{'sec': 346.8124601840973, 'minatar-breakout/eval_R': 62.30999755859375, 'steps': 1208483840}
+{'sec': 347.56559014320374, 'minatar-breakout/eval_R': 66.73999786376953, 'steps': 1211105280}
+{'sec': 348.31692266464233, 'minatar-breakout/eval_R': 67.77999877929688, 'steps': 1213726720}
+{'sec': 349.06961369514465, 'minatar-breakout/eval_R': 59.19999694824219, 'steps': 1216348160}
+{'sec': 349.8218243122101, 'minatar-breakout/eval_R': 67.5, 'steps': 1218969600}
+{'sec': 350.5730142593384, 'minatar-breakout/eval_R': 54.37999725341797, 'steps': 1221591040}
+{'sec': 351.3253667354584, 'minatar-breakout/eval_R': 61.779998779296875, 'steps': 1224212480}
+{'sec': 352.0781214237213, 'minatar-breakout/eval_R': 64.52999877929688, 'steps': 1226833920}
+{'sec': 352.83080101013184, 'minatar-breakout/eval_R': 61.48999786376953, 'steps': 1229455360}
+{'sec': 353.58326983451843, 'minatar-breakout/eval_R': 68.75, 'steps': 1232076800}
+{'sec': 354.33540296554565, 'minatar-breakout/eval_R': 78.13999938964844, 'steps': 1234698240}
+{'sec': 355.08822321891785, 'minatar-breakout/eval_R': 70.76000213623047, 'steps': 1237319680}
+{'sec': 355.84073758125305, 'minatar-breakout/eval_R': 61.89999771118164, 'steps': 1239941120}
+{'sec': 356.59254598617554, 'minatar-breakout/eval_R': 67.90999603271484, 'steps': 1242562560}
+{'sec': 357.34465193748474, 'minatar-breakout/eval_R': 65.75, 'steps': 1245184000}
+{'sec': 358.0978636741638, 'minatar-breakout/eval_R': 70.0199966430664, 'steps': 1247805440}
+{'sec': 358.85072088241577, 'minatar-breakout/eval_R': 68.3499984741211, 'steps': 1250426880}
+{'sec': 359.6016685962677, 'minatar-breakout/eval_R': 64.04000091552734, 'steps': 1253048320}
+{'sec': 360.3535990715027, 'minatar-breakout/eval_R': 65.54999542236328, 'steps': 1255669760}
+{'sec': 361.10601449012756, 'minatar-breakout/eval_R': 78.04000091552734, 'steps': 1258291200}
+{'sec': 361.856831073761, 'minatar-breakout/eval_R': 63.69999694824219, 'steps': 1260912640}
+{'sec': 362.61081647872925, 'minatar-breakout/eval_R': 75.55999755859375, 'steps': 1263534080}
+{'sec': 363.3623194694519, 'minatar-breakout/eval_R': 67.90999603271484, 'steps': 1266155520}
+{'sec': 364.1140010356903, 'minatar-breakout/eval_R': 65.11000061035156, 'steps': 1268776960}
+{'sec': 364.8661320209503, 'minatar-breakout/eval_R': 51.69999694824219, 'steps': 1271398400}
+{'sec': 365.6185188293457, 'minatar-breakout/eval_R': 65.1500015258789, 'steps': 1274019840}
+{'sec': 366.371066570282, 'minatar-breakout/eval_R': 67.8699951171875, 'steps': 1276641280}
+{'sec': 367.1240894794464, 'minatar-breakout/eval_R': 62.57999801635742, 'steps': 1279262720}
+{'sec': 367.8754150867462, 'minatar-breakout/eval_R': 74.6199951171875, 'steps': 1281884160}
+{'sec': 368.62809014320374, 'minatar-breakout/eval_R': 63.19999694824219, 'steps': 1284505600}
+{'sec': 369.3804557323456, 'minatar-breakout/eval_R': 68.01000213623047, 'steps': 1287127040}
+{'sec': 370.13272643089294, 'minatar-breakout/eval_R': 74.91999816894531, 'steps': 1289748480}
+{'sec': 370.8836750984192, 'minatar-breakout/eval_R': 70.54999542236328, 'steps': 1292369920}
+{'sec': 371.63665294647217, 'minatar-breakout/eval_R': 76.73999786376953, 'steps': 1294991360}
+{'sec': 372.38902735710144, 'minatar-breakout/eval_R': 87.95999908447266, 'steps': 1297612800}
+{'sec': 373.14166617393494, 'minatar-breakout/eval_R': 68.97000122070312, 'steps': 1300234240}
+{'sec': 373.89395022392273, 'minatar-breakout/eval_R': 73.4000015258789, 'steps': 1302855680}
+{'sec': 374.64724564552307, 'minatar-breakout/eval_R': 69.79000091552734, 'steps': 1305477120}
+{'sec': 375.39881229400635, 'minatar-breakout/eval_R': 70.81999969482422, 'steps': 1308098560}
+{'sec': 376.1521430015564, 'minatar-breakout/eval_R': 61.62999725341797, 'steps': 1310720000}
+{'sec': 376.90346813201904, 'minatar-breakout/eval_R': 78.65999603271484, 'steps': 1313341440}
+{'sec': 377.65579986572266, 'minatar-breakout/eval_R': 64.5, 'steps': 1315962880}
+{'sec': 378.40876960754395, 'minatar-breakout/eval_R': 71.0, 'steps': 1318584320}
+{'sec': 379.16186714172363, 'minatar-breakout/eval_R': 66.44999694824219, 'steps': 1321205760}
+{'sec': 379.9134919643402, 'minatar-breakout/eval_R': 63.18000030517578, 'steps': 1323827200}
+{'sec': 380.66581106185913, 'minatar-breakout/eval_R': 67.9000015258789, 'steps': 1326448640}
+{'sec': 381.4182608127594, 'minatar-breakout/eval_R': 59.90999984741211, 'steps': 1329070080}
+{'sec': 382.1700849533081, 'minatar-breakout/eval_R': 68.08999633789062, 'steps': 1331691520}
+{'sec': 382.9225649833679, 'minatar-breakout/eval_R': 82.4000015258789, 'steps': 1334312960}
+{'sec': 383.6743743419647, 'minatar-breakout/eval_R': 61.78999710083008, 'steps': 1336934400}
+{'sec': 384.42645621299744, 'minatar-breakout/eval_R': 65.91999816894531, 'steps': 1339555840}
+{'sec': 385.1794078350067, 'minatar-breakout/eval_R': 74.79000091552734, 'steps': 1342177280}
+{'sec': 385.931857585907, 'minatar-breakout/eval_R': 64.6500015258789, 'steps': 1344798720}
+{'sec': 386.68361043930054, 'minatar-breakout/eval_R': 74.65999603271484, 'steps': 1347420160}
+{'sec': 387.4358084201813, 'minatar-breakout/eval_R': 63.30999755859375, 'steps': 1350041600}
+{'sec': 388.18812108039856, 'minatar-breakout/eval_R': 84.73999786376953, 'steps': 1352663040}
+{'sec': 388.9409291744232, 'minatar-breakout/eval_R': 68.8499984741211, 'steps': 1355284480}
+{'sec': 389.6929712295532, 'minatar-breakout/eval_R': 77.0, 'steps': 1357905920}
+{'sec': 390.44411969184875, 'minatar-breakout/eval_R': 68.40999603271484, 'steps': 1360527360}
+{'sec': 391.19685769081116, 'minatar-breakout/eval_R': 69.47000122070312, 'steps': 1363148800}
+{'sec': 391.95009779930115, 'minatar-breakout/eval_R': 74.01000213623047, 'steps': 1365770240}
+{'sec': 392.7020308971405, 'minatar-breakout/eval_R': 71.25, 'steps': 1368391680}
+{'sec': 393.4537208080292, 'minatar-breakout/eval_R': 76.15999603271484, 'steps': 1371013120}
+{'sec': 394.2073264122009, 'minatar-breakout/eval_R': 57.87999725341797, 'steps': 1373634560}
+{'sec': 394.9595263004303, 'minatar-breakout/eval_R': 81.08000183105469, 'steps': 1376256000}
+{'sec': 395.710284948349, 'minatar-breakout/eval_R': 68.66999816894531, 'steps': 1378877440}
+{'sec': 396.46292662620544, 'minatar-breakout/eval_R': 70.40999603271484, 'steps': 1381498880}
+{'sec': 397.21548414230347, 'minatar-breakout/eval_R': 70.5999984741211, 'steps': 1384120320}
+{'sec': 397.9673550128937, 'minatar-breakout/eval_R': 70.7699966430664, 'steps': 1386741760}
+{'sec': 398.719553232193, 'minatar-breakout/eval_R': 58.279998779296875, 'steps': 1389363200}
+{'sec': 399.470899105072, 'minatar-breakout/eval_R': 81.94999694824219, 'steps': 1391984640}
+{'sec': 400.2226183414459, 'minatar-breakout/eval_R': 81.5999984741211, 'steps': 1394606080}
+{'sec': 400.975608587265, 'minatar-breakout/eval_R': 65.26000213623047, 'steps': 1397227520}
+{'sec': 401.7282359600067, 'minatar-breakout/eval_R': 76.2699966430664, 'steps': 1399848960}
+{'sec': 402.4806089401245, 'minatar-breakout/eval_R': 73.16999816894531, 'steps': 1402470400}
+{'sec': 403.23377776145935, 'minatar-breakout/eval_R': 58.62999725341797, 'steps': 1405091840}
+{'sec': 403.98536348342896, 'minatar-breakout/eval_R': 85.45999908447266, 'steps': 1407713280}
+{'sec': 404.7370114326477, 'minatar-breakout/eval_R': 78.6199951171875, 'steps': 1410334720}
+{'sec': 405.4892153739929, 'minatar-breakout/eval_R': 72.15999603271484, 'steps': 1412956160}
+{'sec': 406.2406406402588, 'minatar-breakout/eval_R': 74.27999877929688, 'steps': 1415577600}
+{'sec': 406.9930782318115, 'minatar-breakout/eval_R': 71.25, 'steps': 1418199040}
+{'sec': 407.74529933929443, 'minatar-breakout/eval_R': 66.1199951171875, 'steps': 1420820480}
+{'sec': 408.49683380126953, 'minatar-breakout/eval_R': 69.8699951171875, 'steps': 1423441920}
+{'sec': 409.2501628398895, 'minatar-breakout/eval_R': 76.93999481201172, 'steps': 1426063360}
+{'sec': 410.00258207321167, 'minatar-breakout/eval_R': 83.69999694824219, 'steps': 1428684800}
+{'sec': 410.7544023990631, 'minatar-breakout/eval_R': 74.19999694824219, 'steps': 1431306240}
+{'sec': 411.507027387619, 'minatar-breakout/eval_R': 67.3499984741211, 'steps': 1433927680}
+{'sec': 412.25918984413147, 'minatar-breakout/eval_R': 89.30999755859375, 'steps': 1436549120}
+{'sec': 413.0116517543793, 'minatar-breakout/eval_R': 85.2699966430664, 'steps': 1439170560}
+{'sec': 413.76248049736023, 'minatar-breakout/eval_R': 71.11000061035156, 'steps': 1441792000}
+{'sec': 414.5140573978424, 'minatar-breakout/eval_R': 70.73999786376953, 'steps': 1444413440}
+{'sec': 415.2660686969757, 'minatar-breakout/eval_R': 66.26000213623047, 'steps': 1447034880}
+{'sec': 416.0172429084778, 'minatar-breakout/eval_R': 84.27999877929688, 'steps': 1449656320}
+{'sec': 416.7716295719147, 'minatar-breakout/eval_R': 78.04000091552734, 'steps': 1452277760}
+{'sec': 417.52482748031616, 'minatar-breakout/eval_R': 87.79999542236328, 'steps': 1454899200}
+{'sec': 418.27667021751404, 'minatar-breakout/eval_R': 67.97999572753906, 'steps': 1457520640}
+{'sec': 419.0283064842224, 'minatar-breakout/eval_R': 76.30999755859375, 'steps': 1460142080}
+{'sec': 419.7808766365051, 'minatar-breakout/eval_R': 71.47999572753906, 'steps': 1462763520}
+{'sec': 420.5314836502075, 'minatar-breakout/eval_R': 84.63999938964844, 'steps': 1465384960}
+{'sec': 421.2845582962036, 'minatar-breakout/eval_R': 76.54999542236328, 'steps': 1468006400}
+{'sec': 422.03621339797974, 'minatar-breakout/eval_R': 74.55999755859375, 'steps': 1470627840}
+{'sec': 422.7883610725403, 'minatar-breakout/eval_R': 73.61000061035156, 'steps': 1473249280}
+{'sec': 423.54063510894775, 'minatar-breakout/eval_R': 69.93999481201172, 'steps': 1475870720}
+{'sec': 424.2942636013031, 'minatar-breakout/eval_R': 70.40999603271484, 'steps': 1478492160}
+{'sec': 425.04588866233826, 'minatar-breakout/eval_R': 72.20999908447266, 'steps': 1481113600}
+{'sec': 425.79906725883484, 'minatar-breakout/eval_R': 79.7699966430664, 'steps': 1483735040}
+{'sec': 426.55050921440125, 'minatar-breakout/eval_R': 80.33000183105469, 'steps': 1486356480}
+{'sec': 427.30312848091125, 'minatar-breakout/eval_R': 74.76000213623047, 'steps': 1488977920}
+{'sec': 428.056250333786, 'minatar-breakout/eval_R': 66.93999481201172, 'steps': 1491599360}
+{'sec': 428.8079447746277, 'minatar-breakout/eval_R': 87.73999786376953, 'steps': 1494220800}
+{'sec': 429.5605640411377, 'minatar-breakout/eval_R': 87.43000030517578, 'steps': 1496842240}
+{'sec': 430.31212639808655, 'minatar-breakout/eval_R': 83.50999450683594, 'steps': 1499463680}
+{'sec': 431.0644567012787, 'minatar-breakout/eval_R': 71.97999572753906, 'steps': 1502085120}
+{'sec': 431.8166882991791, 'minatar-breakout/eval_R': 91.73999786376953, 'steps': 1504706560}
+{'sec': 432.56873202323914, 'minatar-breakout/eval_R': 70.15999603271484, 'steps': 1507328000}
+{'sec': 433.32093715667725, 'minatar-breakout/eval_R': 70.04000091552734, 'steps': 1509949440}
+{'sec': 434.07167649269104, 'minatar-breakout/eval_R': 87.45999908447266, 'steps': 1512570880}
+{'sec': 434.8235569000244, 'minatar-breakout/eval_R': 83.83999633789062, 'steps': 1515192320}
+{'sec': 435.57631731033325, 'minatar-breakout/eval_R': 84.48999786376953, 'steps': 1517813760}
+{'sec': 436.3282165527344, 'minatar-breakout/eval_R': 78.47999572753906, 'steps': 1520435200}
+{'sec': 437.08139991760254, 'minatar-breakout/eval_R': 81.66999816894531, 'steps': 1523056640}
+{'sec': 437.8329303264618, 'minatar-breakout/eval_R': 70.54999542236328, 'steps': 1525678080}
+{'sec': 438.5857026576996, 'minatar-breakout/eval_R': 72.68999481201172, 'steps': 1528299520}
+{'sec': 439.3395550251007, 'minatar-breakout/eval_R': 73.54000091552734, 'steps': 1530920960}
+{'sec': 440.0921061038971, 'minatar-breakout/eval_R': 88.98999786376953, 'steps': 1533542400}
+{'sec': 440.84379172325134, 'minatar-breakout/eval_R': 88.45999908447266, 'steps': 1536163840}
+{'sec': 441.59674429893494, 'minatar-breakout/eval_R': 79.30999755859375, 'steps': 1538785280}
+{'sec': 442.3489968776703, 'minatar-breakout/eval_R': 78.29999542236328, 'steps': 1541406720}
+{'sec': 443.0998034477234, 'minatar-breakout/eval_R': 88.86000061035156, 'steps': 1544028160}
+{'sec': 443.8509352207184, 'minatar-breakout/eval_R': 89.02999877929688, 'steps': 1546649600}
+{'sec': 444.60253167152405, 'minatar-breakout/eval_R': 75.50999450683594, 'steps': 1549271040}
+{'sec': 445.3542561531067, 'minatar-breakout/eval_R': 88.04999542236328, 'steps': 1551892480}
+{'sec': 446.1071219444275, 'minatar-breakout/eval_R': 75.3499984741211, 'steps': 1554513920}
+{'sec': 446.8610360622406, 'minatar-breakout/eval_R': 80.79000091552734, 'steps': 1557135360}
+{'sec': 447.6128668785095, 'minatar-breakout/eval_R': 81.95999908447266, 'steps': 1559756800}
+{'sec': 448.366082906723, 'minatar-breakout/eval_R': 77.02999877929688, 'steps': 1562378240}
+{'sec': 449.11836767196655, 'minatar-breakout/eval_R': 85.95999908447266, 'steps': 1564999680}
+{'sec': 449.87049770355225, 'minatar-breakout/eval_R': 70.23999786376953, 'steps': 1567621120}
+{'sec': 450.62200379371643, 'minatar-breakout/eval_R': 94.25999450683594, 'steps': 1570242560}
+{'sec': 451.37373876571655, 'minatar-breakout/eval_R': 87.18000030517578, 'steps': 1572864000}
+{'sec': 452.1265766620636, 'minatar-breakout/eval_R': 78.1500015258789, 'steps': 1575485440}
+{'sec': 452.8789529800415, 'minatar-breakout/eval_R': 83.44999694824219, 'steps': 1578106880}
+{'sec': 453.631867647171, 'minatar-breakout/eval_R': 74.1500015258789, 'steps': 1580728320}
+{'sec': 454.38355898857117, 'minatar-breakout/eval_R': 69.30999755859375, 'steps': 1583349760}
+{'sec': 455.1349050998688, 'minatar-breakout/eval_R': 80.3499984741211, 'steps': 1585971200}
+{'sec': 455.88804292678833, 'minatar-breakout/eval_R': 75.58000183105469, 'steps': 1588592640}
+{'sec': 456.6392159461975, 'minatar-breakout/eval_R': 78.36000061035156, 'steps': 1591214080}
+{'sec': 457.39154601097107, 'minatar-breakout/eval_R': 79.94999694824219, 'steps': 1593835520}
+{'sec': 458.1430432796478, 'minatar-breakout/eval_R': 66.30999755859375, 'steps': 1596456960}
+{'sec': 458.8951451778412, 'minatar-breakout/eval_R': 78.91999816894531, 'steps': 1599078400}
+{'sec': 459.64655590057373, 'minatar-breakout/eval_R': 77.15999603271484, 'steps': 1601699840}
+{'sec': 460.39824199676514, 'minatar-breakout/eval_R': 71.31999969482422, 'steps': 1604321280}
+{'sec': 461.1508855819702, 'minatar-breakout/eval_R': 85.29000091552734, 'steps': 1606942720}
+{'sec': 461.9033992290497, 'minatar-breakout/eval_R': 72.40999603271484, 'steps': 1609564160}
+{'sec': 462.6559245586395, 'minatar-breakout/eval_R': 79.33000183105469, 'steps': 1612185600}
+{'sec': 463.40860080718994, 'minatar-breakout/eval_R': 81.1199951171875, 'steps': 1614807040}
+{'sec': 464.16002440452576, 'minatar-breakout/eval_R': 82.87999725341797, 'steps': 1617428480}
+{'sec': 464.9118309020996, 'minatar-breakout/eval_R': 91.18999481201172, 'steps': 1620049920}
+{'sec': 465.66377687454224, 'minatar-breakout/eval_R': 92.12999725341797, 'steps': 1622671360}
+{'sec': 466.4166877269745, 'minatar-breakout/eval_R': 79.22999572753906, 'steps': 1625292800}
+{'sec': 467.169038772583, 'minatar-breakout/eval_R': 85.23999786376953, 'steps': 1627914240}
+{'sec': 467.92035961151123, 'minatar-breakout/eval_R': 82.40999603271484, 'steps': 1630535680}
+{'sec': 468.67383551597595, 'minatar-breakout/eval_R': 95.08999633789062, 'steps': 1633157120}
+{'sec': 469.42599272727966, 'minatar-breakout/eval_R': 80.54000091552734, 'steps': 1635778560}
+{'sec': 470.1783266067505, 'minatar-breakout/eval_R': 88.8699951171875, 'steps': 1638400000}
+{'sec': 470.9306859970093, 'minatar-breakout/eval_R': 70.79000091552734, 'steps': 1641021440}
+{'sec': 471.68341422080994, 'minatar-breakout/eval_R': 79.0999984741211, 'steps': 1643642880}
+{'sec': 472.43584275245667, 'minatar-breakout/eval_R': 95.06999969482422, 'steps': 1646264320}
+{'sec': 473.18829107284546, 'minatar-breakout/eval_R': 92.9000015258789, 'steps': 1648885760}
+{'sec': 473.94075107574463, 'minatar-breakout/eval_R': 74.6500015258789, 'steps': 1651507200}
+{'sec': 474.6936433315277, 'minatar-breakout/eval_R': 81.5199966430664, 'steps': 1654128640}
+{'sec': 475.4470021724701, 'minatar-breakout/eval_R': 77.06999969482422, 'steps': 1656750080}
+{'sec': 476.1997127532959, 'minatar-breakout/eval_R': 79.72999572753906, 'steps': 1659371520}
+{'sec': 476.9523575305939, 'minatar-breakout/eval_R': 88.88999938964844, 'steps': 1661992960}
+{'sec': 477.7043766975403, 'minatar-breakout/eval_R': 93.0, 'steps': 1664614400}
+{'sec': 478.4570360183716, 'minatar-breakout/eval_R': 93.27999877929688, 'steps': 1667235840}
+{'sec': 479.20850563049316, 'minatar-breakout/eval_R': 71.04999542236328, 'steps': 1669857280}
+{'sec': 479.9601261615753, 'minatar-breakout/eval_R': 89.63999938964844, 'steps': 1672478720}
+{'sec': 480.71244049072266, 'minatar-breakout/eval_R': 86.61000061035156, 'steps': 1675100160}
+{'sec': 481.46434354782104, 'minatar-breakout/eval_R': 87.33000183105469, 'steps': 1677721600}
+{'sec': 482.21639490127563, 'minatar-breakout/eval_R': 73.54999542236328, 'steps': 1680343040}
+{'sec': 482.96794843673706, 'minatar-breakout/eval_R': 79.8499984741211, 'steps': 1682964480}
+{'sec': 483.7214012145996, 'minatar-breakout/eval_R': 79.30999755859375, 'steps': 1685585920}
+{'sec': 484.4733736515045, 'minatar-breakout/eval_R': 81.25, 'steps': 1688207360}
+{'sec': 485.2258813381195, 'minatar-breakout/eval_R': 90.47000122070312, 'steps': 1690828800}
+{'sec': 485.97779393196106, 'minatar-breakout/eval_R': 90.86000061035156, 'steps': 1693450240}
+{'sec': 486.7295227050781, 'minatar-breakout/eval_R': 78.86000061035156, 'steps': 1696071680}
+{'sec': 487.4821968078613, 'minatar-breakout/eval_R': 90.05999755859375, 'steps': 1698693120}
+{'sec': 488.2337839603424, 'minatar-breakout/eval_R': 82.04000091552734, 'steps': 1701314560}
+{'sec': 488.9852249622345, 'minatar-breakout/eval_R': 90.31999969482422, 'steps': 1703936000}
+{'sec': 489.7378661632538, 'minatar-breakout/eval_R': 74.02999877929688, 'steps': 1706557440}
+{'sec': 490.48878812789917, 'minatar-breakout/eval_R': 84.4000015258789, 'steps': 1709178880}
+{'sec': 491.2408893108368, 'minatar-breakout/eval_R': 75.50999450683594, 'steps': 1711800320}
+{'sec': 491.99353098869324, 'minatar-breakout/eval_R': 82.37999725341797, 'steps': 1714421760}
+{'sec': 492.7454309463501, 'minatar-breakout/eval_R': 91.7699966430664, 'steps': 1717043200}
+{'sec': 493.49695324897766, 'minatar-breakout/eval_R': 97.82999420166016, 'steps': 1719664640}
+{'sec': 494.2491009235382, 'minatar-breakout/eval_R': 83.75999450683594, 'steps': 1722286080}
+{'sec': 495.0003011226654, 'minatar-breakout/eval_R': 76.70999908447266, 'steps': 1724907520}
+{'sec': 495.7528717517853, 'minatar-breakout/eval_R': 83.75, 'steps': 1727528960}
+{'sec': 496.5056097507477, 'minatar-breakout/eval_R': 74.8699951171875, 'steps': 1730150400}
+{'sec': 497.25711965560913, 'minatar-breakout/eval_R': 98.31999969482422, 'steps': 1732771840}
+{'sec': 498.0099849700928, 'minatar-breakout/eval_R': 82.2699966430664, 'steps': 1735393280}
+{'sec': 498.76246070861816, 'minatar-breakout/eval_R': 95.8699951171875, 'steps': 1738014720}
+{'sec': 499.5145351886749, 'minatar-breakout/eval_R': 87.58999633789062, 'steps': 1740636160}
+{'sec': 500.2661635875702, 'minatar-breakout/eval_R': 80.05999755859375, 'steps': 1743257600}
+{'sec': 501.01877427101135, 'minatar-breakout/eval_R': 81.23999786376953, 'steps': 1745879040}
+{'sec': 501.7697012424469, 'minatar-breakout/eval_R': 93.97000122070312, 'steps': 1748500480}
+{'sec': 502.52218317985535, 'minatar-breakout/eval_R': 82.5999984741211, 'steps': 1751121920}
+{'sec': 503.27498292922974, 'minatar-breakout/eval_R': 80.98999786376953, 'steps': 1753743360}
+{'sec': 504.0271227359772, 'minatar-breakout/eval_R': 91.73999786376953, 'steps': 1756364800}
+{'sec': 504.77951979637146, 'minatar-breakout/eval_R': 88.47999572753906, 'steps': 1758986240}
+{'sec': 505.53171277046204, 'minatar-breakout/eval_R': 86.69999694824219, 'steps': 1761607680}
+{'sec': 506.28554463386536, 'minatar-breakout/eval_R': 86.81999969482422, 'steps': 1764229120}
+{'sec': 507.03695702552795, 'minatar-breakout/eval_R': 83.77999877929688, 'steps': 1766850560}
+{'sec': 507.78971099853516, 'minatar-breakout/eval_R': 97.25, 'steps': 1769472000}
+{'sec': 508.54136657714844, 'minatar-breakout/eval_R': 90.61000061035156, 'steps': 1772093440}
+{'sec': 509.2940866947174, 'minatar-breakout/eval_R': 78.93999481201172, 'steps': 1774714880}
+{'sec': 510.0459098815918, 'minatar-breakout/eval_R': 95.05999755859375, 'steps': 1777336320}
+{'sec': 510.79780673980713, 'minatar-breakout/eval_R': 86.5, 'steps': 1779957760}
+{'sec': 511.5502178668976, 'minatar-breakout/eval_R': 85.04999542236328, 'steps': 1782579200}
+{'sec': 512.3029737472534, 'minatar-breakout/eval_R': 77.18000030517578, 'steps': 1785200640}
+{'sec': 513.0550973415375, 'minatar-breakout/eval_R': 76.77999877929688, 'steps': 1787822080}
+{'sec': 513.8076822757721, 'minatar-breakout/eval_R': 77.02999877929688, 'steps': 1790443520}
+{'sec': 514.5608510971069, 'minatar-breakout/eval_R': 88.62999725341797, 'steps': 1793064960}
+{'sec': 515.3116416931152, 'minatar-breakout/eval_R': 88.05999755859375, 'steps': 1795686400}
+{'sec': 516.0640218257904, 'minatar-breakout/eval_R': 89.58999633789062, 'steps': 1798307840}
+{'sec': 516.8157317638397, 'minatar-breakout/eval_R': 88.25, 'steps': 1800929280}
+{'sec': 517.5680141448975, 'minatar-breakout/eval_R': 82.05999755859375, 'steps': 1803550720}
+{'sec': 518.3195080757141, 'minatar-breakout/eval_R': 88.94999694824219, 'steps': 1806172160}
+{'sec': 519.071218252182, 'minatar-breakout/eval_R': 101.13999938964844, 'steps': 1808793600}
+{'sec': 519.823447227478, 'minatar-breakout/eval_R': 92.97999572753906, 'steps': 1811415040}
+{'sec': 520.5760478973389, 'minatar-breakout/eval_R': 74.93999481201172, 'steps': 1814036480}
+{'sec': 521.3290770053864, 'minatar-breakout/eval_R': 93.88999938964844, 'steps': 1816657920}
+{'sec': 522.0798895359039, 'minatar-breakout/eval_R': 96.06999969482422, 'steps': 1819279360}
+{'sec': 522.8322567939758, 'minatar-breakout/eval_R': 82.6199951171875, 'steps': 1821900800}
+{'sec': 523.5850186347961, 'minatar-breakout/eval_R': 87.93000030517578, 'steps': 1824522240}
+{'sec': 524.336977481842, 'minatar-breakout/eval_R': 96.94999694824219, 'steps': 1827143680}
+{'sec': 525.0892763137817, 'minatar-breakout/eval_R': 89.97999572753906, 'steps': 1829765120}
+{'sec': 525.841780424118, 'minatar-breakout/eval_R': 91.56999969482422, 'steps': 1832386560}
+{'sec': 526.5935785770416, 'minatar-breakout/eval_R': 82.68999481201172, 'steps': 1835008000}
+{'sec': 527.3468115329742, 'minatar-breakout/eval_R': 87.05999755859375, 'steps': 1837629440}
+{'sec': 528.0995483398438, 'minatar-breakout/eval_R': 93.55999755859375, 'steps': 1840250880}
+{'sec': 528.8506391048431, 'minatar-breakout/eval_R': 83.70999908447266, 'steps': 1842872320}
+{'sec': 529.6038296222687, 'minatar-breakout/eval_R': 87.36000061035156, 'steps': 1845493760}
+{'sec': 530.3554515838623, 'minatar-breakout/eval_R': 81.50999450683594, 'steps': 1848115200}
+{'sec': 531.1084144115448, 'minatar-breakout/eval_R': 75.77999877929688, 'steps': 1850736640}
+{'sec': 531.8599450588226, 'minatar-breakout/eval_R': 84.95999908447266, 'steps': 1853358080}
+{'sec': 532.6128828525543, 'minatar-breakout/eval_R': 101.08999633789062, 'steps': 1855979520}
+{'sec': 533.3639590740204, 'minatar-breakout/eval_R': 68.54999542236328, 'steps': 1858600960}
+{'sec': 534.1168372631073, 'minatar-breakout/eval_R': 81.02999877929688, 'steps': 1861222400}
+{'sec': 534.8706579208374, 'minatar-breakout/eval_R': 113.63999938964844, 'steps': 1863843840}
+{'sec': 535.6242926120758, 'minatar-breakout/eval_R': 73.73999786376953, 'steps': 1866465280}
+{'sec': 536.3765985965729, 'minatar-breakout/eval_R': 102.16999816894531, 'steps': 1869086720}
+{'sec': 537.1294648647308, 'minatar-breakout/eval_R': 89.19999694824219, 'steps': 1871708160}
+{'sec': 537.8822479248047, 'minatar-breakout/eval_R': 104.13999938964844, 'steps': 1874329600}
+{'sec': 538.634726524353, 'minatar-breakout/eval_R': 100.62999725341797, 'steps': 1876951040}
+{'sec': 539.3870043754578, 'minatar-breakout/eval_R': 89.57999420166016, 'steps': 1879572480}
+{'sec': 540.138747215271, 'minatar-breakout/eval_R': 88.30999755859375, 'steps': 1882193920}
+{'sec': 540.8906307220459, 'minatar-breakout/eval_R': 76.44999694824219, 'steps': 1884815360}
+{'sec': 541.6433250904083, 'minatar-breakout/eval_R': 90.1500015258789, 'steps': 1887436800}
+{'sec': 542.395587682724, 'minatar-breakout/eval_R': 86.95999908447266, 'steps': 1890058240}
+{'sec': 543.1477036476135, 'minatar-breakout/eval_R': 78.1199951171875, 'steps': 1892679680}
+{'sec': 543.9003729820251, 'minatar-breakout/eval_R': 95.72000122070312, 'steps': 1895301120}
+{'sec': 544.6518015861511, 'minatar-breakout/eval_R': 77.86000061035156, 'steps': 1897922560}
+{'sec': 545.4031751155853, 'minatar-breakout/eval_R': 90.29000091552734, 'steps': 1900544000}
+{'sec': 546.1558563709259, 'minatar-breakout/eval_R': 87.15999603271484, 'steps': 1903165440}
+{'sec': 546.9066097736359, 'minatar-breakout/eval_R': 102.22999572753906, 'steps': 1905786880}
+{'sec': 547.6581585407257, 'minatar-breakout/eval_R': 85.54999542236328, 'steps': 1908408320}
+{'sec': 548.4106779098511, 'minatar-breakout/eval_R': 87.75, 'steps': 1911029760}
+{'sec': 549.162538766861, 'minatar-breakout/eval_R': 96.11000061035156, 'steps': 1913651200}
+{'sec': 549.9151010513306, 'minatar-breakout/eval_R': 91.55999755859375, 'steps': 1916272640}
+{'sec': 550.6665096282959, 'minatar-breakout/eval_R': 74.58000183105469, 'steps': 1918894080}
+{'sec': 551.4183990955353, 'minatar-breakout/eval_R': 90.08999633789062, 'steps': 1921515520}
+{'sec': 552.1717386245728, 'minatar-breakout/eval_R': 76.5999984741211, 'steps': 1924136960}
+{'sec': 552.9243109226227, 'minatar-breakout/eval_R': 96.68000030517578, 'steps': 1926758400}
+{'sec': 553.6753602027893, 'minatar-breakout/eval_R': 93.36000061035156, 'steps': 1929379840}
+{'sec': 554.428603887558, 'minatar-breakout/eval_R': 83.33000183105469, 'steps': 1932001280}
+{'sec': 555.180431842804, 'minatar-breakout/eval_R': 92.00999450683594, 'steps': 1934622720}
+{'sec': 555.9324464797974, 'minatar-breakout/eval_R': 101.08999633789062, 'steps': 1937244160}
+{'sec': 556.6855444908142, 'minatar-breakout/eval_R': 79.23999786376953, 'steps': 1939865600}
+{'sec': 557.4384329319, 'minatar-breakout/eval_R': 83.83999633789062, 'steps': 1942487040}
+{'sec': 558.1904561519623, 'minatar-breakout/eval_R': 99.52999877929688, 'steps': 1945108480}
+{'sec': 558.9438767433167, 'minatar-breakout/eval_R': 94.63999938964844, 'steps': 1947729920}
+{'sec': 559.6955244541168, 'minatar-breakout/eval_R': 98.40999603271484, 'steps': 1950351360}
+{'sec': 560.4483160972595, 'minatar-breakout/eval_R': 96.22000122070312, 'steps': 1952972800}
+{'sec': 561.2006347179413, 'minatar-breakout/eval_R': 94.5199966430664, 'steps': 1955594240}
+{'sec': 561.9529023170471, 'minatar-breakout/eval_R': 83.54000091552734, 'steps': 1958215680}
+{'sec': 562.7038681507111, 'minatar-breakout/eval_R': 96.0199966430664, 'steps': 1960837120}
+{'sec': 563.4570083618164, 'minatar-breakout/eval_R': 97.83999633789062, 'steps': 1963458560}
+{'sec': 564.2105379104614, 'minatar-breakout/eval_R': 85.58000183105469, 'steps': 1966080000}
+{'sec': 564.9631233215332, 'minatar-breakout/eval_R': 87.40999603271484, 'steps': 1968701440}
+{'sec': 565.7154281139374, 'minatar-breakout/eval_R': 79.33999633789062, 'steps': 1971322880}
+{'sec': 566.4683218002319, 'minatar-breakout/eval_R': 94.52999877929688, 'steps': 1973944320}
+{'sec': 567.2201771736145, 'minatar-breakout/eval_R': 86.02999877929688, 'steps': 1976565760}
+{'sec': 567.9715478420258, 'minatar-breakout/eval_R': 92.08999633789062, 'steps': 1979187200}
+{'sec': 568.7232460975647, 'minatar-breakout/eval_R': 103.93999481201172, 'steps': 1981808640}
+{'sec': 569.4750683307648, 'minatar-breakout/eval_R': 94.20999908447266, 'steps': 1984430080}
+{'sec': 570.2283403873444, 'minatar-breakout/eval_R': 107.40999603271484, 'steps': 1987051520}
+{'sec': 570.9807279109955, 'minatar-breakout/eval_R': 82.5999984741211, 'steps': 1989672960}
+{'sec': 571.7336928844452, 'minatar-breakout/eval_R': 98.23999786376953, 'steps': 1992294400}
+{'sec': 572.4861471652985, 'minatar-breakout/eval_R': 73.6500015258789, 'steps': 1994915840}
+{'sec': 573.2375087738037, 'minatar-breakout/eval_R': 102.8499984741211, 'steps': 1997537280}
+Model saved to ./minatar-ppo-autoregressive-models/minatar-breakout//minatar-breakout-autoregressive-fs=1-N=5-135k-params.ckpt
+Training complete!

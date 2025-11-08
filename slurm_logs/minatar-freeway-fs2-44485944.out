@@ -1,0 +1,269 @@
+Job:  minatar-freeway-fs2 (44485944)
+Node: holygpu8a31105.rc.fas.harvard.edu
+GPUs: 0
+Cores per task: 2
+Python path updated:
+sys.path includes: /home/ubuntu/tensorflow_test/control/real-timeRL/realtime-atari-jax
+PYTHONPATH env var: /home/ubuntu/tensorflow_test/control/real-timeRL/realtime-atari-jax:
+Config: env_name='minatar-freeway' seed=0 lr=0.0003 num_envs=4096 num_eval_envs=100 num_steps=128 plan_horizon=6 total_timesteps=300000000 frame_skip=2 update_epochs=3 minibatch_size=4096 gamma=0.99 gae_lambda=0.95 clip_eps=0.2 ent_coef=0.01 vf_coef=0.5 max_grad_norm=0.5 wandb_project='pgx-minatar-ppo' save_model=True gpu_id=0
+Available JAX devices: [CudaDevice(id=0)]
+Using device: cuda:0
+Using custom Freeway env with frame skip
+Starting training (PPO with expanded macro actions)...
+ActorCritic( # Param: 70,067 (280.3 KB)
+  base_num_actions=3,
+  plan_horizon=6,
+  macro_num_actions=18,
+  activation='tanh',
+  conv=Conv( # Param: 928 (3.7 KB)
+    kernel_shape=(2, 2, 7, 32),
+    kernel=Param( # 896 (3.6 KB)
+      value=Array(shape=(2, 2, 7, 32), dtype=dtype('float32'))
+    ),
+    bias=Param( # 32 (128 B)
+      value=Array(shape=(32,), dtype=dtype('float32'))
+    ),
+    in_features=7,
+    out_features=32,
+    kernel_size=(2, 2),
+    strides=1,
+    padding='SAME',
+    input_dilation=1,
+    kernel_dilation=1,
+    feature_group_count=1,
+    use_bias=True,
+    mask=None,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x14f66fdce9e0>,
+    bias_init=<function zeros at 0x14f671a5c3a0>,
+    conv_general_dilated=<function conv_general_dilated at 0x14f6723081f0>,
+    promote_dtype=<function promote_dtype at 0x14f66fdce560>
+  ),
+  avg_pool=functools.partial(<function avg_pool at 0x14f671309b40>, window_shape=(2, 2), strides=(2, 2), padding='VALID'),
+  fc=Linear( # Param: 51,264 (205.1 KB)
+    kernel=Param( # 51,200 (204.8 KB)
+      value=Array(shape=(800, 64), dtype=dtype('float32'))
+    ),
+    bias=Param( # 64 (256 B)
+      value=Array(shape=(64,), dtype=dtype('float32'))
+    ),
+    in_features=800,
+    out_features=64,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x14f66fdce9e0>,
+    bias_init=<function zeros at 0x14f671a5c3a0>,
+    dot_general=<function dot_general at 0x14f6722b0550>,
+    promote_dtype=<function promote_dtype at 0x14f66fdce560>
+  ),
+  actor_h1=Linear( # Param: 4,160 (16.6 KB)
+    kernel=Param( # 4,096 (16.4 KB)
+      value=Array(shape=(64, 64), dtype=dtype('float32'))
+    ),
+    bias=Param( # 64 (256 B)
+      value=Array(shape=(64,), dtype=dtype('float32'))
+    ),
+    in_features=64,
+    out_features=64,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x14f66fdce9e0>,
+    bias_init=<function zeros at 0x14f671a5c3a0>,
+    dot_general=<function dot_general at 0x14f6722b0550>,
+    promote_dtype=<function promote_dtype at 0x14f66fdce560>
+  ),
+  actor_h2=Linear( # Param: 4,160 (16.6 KB)
+    kernel=Param( # 4,096 (16.4 KB)
+      value=Array(shape=(64, 64), dtype=dtype('float32'))
+    ),
+    bias=Param( # 64 (256 B)
+      value=Array(shape=(64,), dtype=dtype('float32'))
+    ),
+    in_features=64,
+    out_features=64,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x14f66fdce9e0>,
+    bias_init=<function zeros at 0x14f671a5c3a0>,
+    dot_general=<function dot_general at 0x14f6722b0550>,
+    promote_dtype=<function promote_dtype at 0x14f66fdce560>
+  ),
+  actor_out=Linear( # Param: 1,170 (4.7 KB)
+    kernel=Param( # 1,152 (4.6 KB)
+      value=Array(shape=(64, 18), dtype=dtype('float32'))
+    ),
+    bias=Param( # 18 (72 B)
+      value=Array(shape=(18,), dtype=dtype('float32'))
+    ),
+    in_features=64,
+    out_features=18,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x14f66fdce9e0>,
+    bias_init=<function zeros at 0x14f671a5c3a0>,
+    dot_general=<function dot_general at 0x14f6722b0550>,
+    promote_dtype=<function promote_dtype at 0x14f66fdce560>
+  ),
+  critic_h1=Linear( # Param: 4,160 (16.6 KB)
+    kernel=Param( # 4,096 (16.4 KB)
+      value=Array(shape=(64, 64), dtype=dtype('float32'))
+    ),
+    bias=Param( # 64 (256 B)
+      value=Array(shape=(64,), dtype=dtype('float32'))
+    ),
+    in_features=64,
+    out_features=64,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x14f66fdce9e0>,
+    bias_init=<function zeros at 0x14f671a5c3a0>,
+    dot_general=<function dot_general at 0x14f6722b0550>,
+    promote_dtype=<function promote_dtype at 0x14f66fdce560>
+  ),
+  critic_h2=Linear( # Param: 4,160 (16.6 KB)
+    kernel=Param( # 4,096 (16.4 KB)
+      value=Array(shape=(64, 64), dtype=dtype('float32'))
+    ),
+    bias=Param( # 64 (256 B)
+      value=Array(shape=(64,), dtype=dtype('float32'))
+    ),
+    in_features=64,
+    out_features=64,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x14f66fdce9e0>,
+    bias_init=<function zeros at 0x14f671a5c3a0>,
+    dot_general=<function dot_general at 0x14f6722b0550>,
+    promote_dtype=<function promote_dtype at 0x14f66fdce560>
+  ),
+  critic_out=Linear( # Param: 65 (260 B)
+    kernel=Param( # 64 (256 B)
+      value=Array(shape=(64, 1), dtype=dtype('float32'))
+    ),
+    bias=Param( # 1 (4 B)
+      value=Array([0.], dtype=float32)
+    ),
+    in_features=64,
+    out_features=1,
+    use_bias=True,
+    dtype=None,
+    param_dtype=float32,
+    precision=None,
+    kernel_init=<function variance_scaling.<locals>.init at 0x14f66fdce9e0>,
+    bias_init=<function zeros at 0x14f671a5c3a0>,
+    dot_general=<function dot_general at 0x14f6722b0550>,
+    promote_dtype=<function promote_dtype at 0x14f66fdce560>
+  )
+)
+{'sec': 0.0, 'minatar-freeway/eval_R': 4.099999904632568, 'steps': 0}
+{'sec': 0.6896843910217285, 'minatar-freeway/eval_R': 6.929999828338623, 'steps': 3145728}
+{'sec': 1.375727653503418, 'minatar-freeway/eval_R': 10.729999542236328, 'steps': 6291456}
+{'sec': 2.0613222122192383, 'minatar-freeway/eval_R': 15.539999961853027, 'steps': 9437184}
+{'sec': 2.746509075164795, 'minatar-freeway/eval_R': 20.09000015258789, 'steps': 12582912}
+{'sec': 3.43196177482605, 'minatar-freeway/eval_R': 23.739999771118164, 'steps': 15728640}
+{'sec': 4.117366313934326, 'minatar-freeway/eval_R': 25.75, 'steps': 18874368}
+{'sec': 4.802290439605713, 'minatar-freeway/eval_R': 27.309999465942383, 'steps': 22020096}
+{'sec': 5.487377882003784, 'minatar-freeway/eval_R': 27.489999771118164, 'steps': 25165824}
+{'sec': 6.17215371131897, 'minatar-freeway/eval_R': 27.649999618530273, 'steps': 28311552}
+{'sec': 6.857460021972656, 'minatar-freeway/eval_R': 29.84000015258789, 'steps': 31457280}
+{'sec': 7.542482614517212, 'minatar-freeway/eval_R': 30.60999870300293, 'steps': 34603008}
+{'sec': 8.227531433105469, 'minatar-freeway/eval_R': 30.579999923706055, 'steps': 37748736}
+{'sec': 8.913210153579712, 'minatar-freeway/eval_R': 32.11000061035156, 'steps': 40894464}
+{'sec': 9.598516464233398, 'minatar-freeway/eval_R': 32.099998474121094, 'steps': 44040192}
+{'sec': 10.283565998077393, 'minatar-freeway/eval_R': 33.689998626708984, 'steps': 47185920}
+{'sec': 10.968913078308105, 'minatar-freeway/eval_R': 35.14999771118164, 'steps': 50331648}
+{'sec': 11.654453754425049, 'minatar-freeway/eval_R': 36.619998931884766, 'steps': 53477376}
+{'sec': 12.339952945709229, 'minatar-freeway/eval_R': 37.189998626708984, 'steps': 56623104}
+{'sec': 13.025639772415161, 'minatar-freeway/eval_R': 37.88999938964844, 'steps': 59768832}
+{'sec': 13.711476564407349, 'minatar-freeway/eval_R': 38.34000015258789, 'steps': 62914560}
+{'sec': 14.397189140319824, 'minatar-freeway/eval_R': 38.54999923706055, 'steps': 66060288}
+{'sec': 15.082561492919922, 'minatar-freeway/eval_R': 40.02000045776367, 'steps': 69206016}
+{'sec': 15.76863408088684, 'minatar-freeway/eval_R': 40.04999923706055, 'steps': 72351744}
+{'sec': 16.454018354415894, 'minatar-freeway/eval_R': 41.45000076293945, 'steps': 75497472}
+{'sec': 17.13977885246277, 'minatar-freeway/eval_R': 41.959999084472656, 'steps': 78643200}
+{'sec': 17.825334072113037, 'minatar-freeway/eval_R': 42.89999771118164, 'steps': 81788928}
+{'sec': 18.511353969573975, 'minatar-freeway/eval_R': 43.5099983215332, 'steps': 84934656}
+{'sec': 19.197110652923584, 'minatar-freeway/eval_R': 44.71999740600586, 'steps': 88080384}
+{'sec': 19.883010149002075, 'minatar-freeway/eval_R': 44.90999984741211, 'steps': 91226112}
+{'sec': 20.56840753555298, 'minatar-freeway/eval_R': 44.89999771118164, 'steps': 94371840}
+{'sec': 21.253818035125732, 'minatar-freeway/eval_R': 46.14999771118164, 'steps': 97517568}
+{'sec': 21.939218521118164, 'minatar-freeway/eval_R': 46.61000061035156, 'steps': 100663296}
+{'sec': 22.625030040740967, 'minatar-freeway/eval_R': 46.599998474121094, 'steps': 103809024}
+{'sec': 23.31050944328308, 'minatar-freeway/eval_R': 47.27000045776367, 'steps': 106954752}
+{'sec': 23.997166872024536, 'minatar-freeway/eval_R': 47.78999710083008, 'steps': 110100480}
+{'sec': 24.682861804962158, 'minatar-freeway/eval_R': 48.369998931884766, 'steps': 113246208}
+{'sec': 25.368612051010132, 'minatar-freeway/eval_R': 48.97999954223633, 'steps': 116391936}
+{'sec': 26.0539870262146, 'minatar-freeway/eval_R': 49.06999969482422, 'steps': 119537664}
+{'sec': 26.739436388015747, 'minatar-freeway/eval_R': 49.099998474121094, 'steps': 122683392}
+{'sec': 27.424699544906616, 'minatar-freeway/eval_R': 50.0099983215332, 'steps': 125829120}
+{'sec': 28.110215425491333, 'minatar-freeway/eval_R': 49.959999084472656, 'steps': 128974848}
+{'sec': 28.79606604576111, 'minatar-freeway/eval_R': 51.07999801635742, 'steps': 132120576}
+{'sec': 29.48198699951172, 'minatar-freeway/eval_R': 49.82999801635742, 'steps': 135266304}
+{'sec': 30.17363476753235, 'minatar-freeway/eval_R': 51.41999816894531, 'steps': 138412032}
+{'sec': 30.859678745269775, 'minatar-freeway/eval_R': 51.689998626708984, 'steps': 141557760}
+{'sec': 31.545267581939697, 'minatar-freeway/eval_R': 51.44999694824219, 'steps': 144703488}
+{'sec': 32.23094201087952, 'minatar-freeway/eval_R': 52.2599983215332, 'steps': 147849216}
+{'sec': 32.916502237319946, 'minatar-freeway/eval_R': 52.90999984741211, 'steps': 150994944}
+{'sec': 33.60299205780029, 'minatar-freeway/eval_R': 53.36000061035156, 'steps': 154140672}
+{'sec': 34.28868746757507, 'minatar-freeway/eval_R': 53.599998474121094, 'steps': 157286400}
+{'sec': 34.97432732582092, 'minatar-freeway/eval_R': 53.369998931884766, 'steps': 160432128}
+{'sec': 35.65956926345825, 'minatar-freeway/eval_R': 53.5099983215332, 'steps': 163577856}
+{'sec': 36.34557914733887, 'minatar-freeway/eval_R': 54.13999938964844, 'steps': 166723584}
+{'sec': 37.03053855895996, 'minatar-freeway/eval_R': 54.5, 'steps': 169869312}
+{'sec': 37.71625208854675, 'minatar-freeway/eval_R': 53.93000030517578, 'steps': 173015040}
+{'sec': 38.402220249176025, 'minatar-freeway/eval_R': 54.52000045776367, 'steps': 176160768}
+{'sec': 39.08752083778381, 'minatar-freeway/eval_R': 54.89999771118164, 'steps': 179306496}
+{'sec': 39.772844076156616, 'minatar-freeway/eval_R': 54.87999725341797, 'steps': 182452224}
+{'sec': 40.45840287208557, 'minatar-freeway/eval_R': 55.40999984741211, 'steps': 185597952}
+{'sec': 41.14355111122131, 'minatar-freeway/eval_R': 55.5099983215332, 'steps': 188743680}
+{'sec': 41.828991651535034, 'minatar-freeway/eval_R': 55.03999710083008, 'steps': 191889408}
+{'sec': 42.51566791534424, 'minatar-freeway/eval_R': 55.959999084472656, 'steps': 195035136}
+{'sec': 43.201263189315796, 'minatar-freeway/eval_R': 56.41999816894531, 'steps': 198180864}
+{'sec': 43.88664412498474, 'minatar-freeway/eval_R': 56.34000015258789, 'steps': 201326592}
+{'sec': 44.57213759422302, 'minatar-freeway/eval_R': 56.599998474121094, 'steps': 204472320}
+{'sec': 45.25772762298584, 'minatar-freeway/eval_R': 56.29999923706055, 'steps': 207618048}
+{'sec': 45.94341063499451, 'minatar-freeway/eval_R': 56.88999938964844, 'steps': 210763776}
+{'sec': 46.629520893096924, 'minatar-freeway/eval_R': 56.64999771118164, 'steps': 213909504}
+{'sec': 47.315035581588745, 'minatar-freeway/eval_R': 56.22999954223633, 'steps': 217055232}
+{'sec': 48.00060033798218, 'minatar-freeway/eval_R': 56.66999816894531, 'steps': 220200960}
+{'sec': 48.68593120574951, 'minatar-freeway/eval_R': 57.54999923706055, 'steps': 223346688}
+{'sec': 49.371246576309204, 'minatar-freeway/eval_R': 57.03999710083008, 'steps': 226492416}
+{'sec': 50.056955099105835, 'minatar-freeway/eval_R': 57.11000061035156, 'steps': 229638144}
+{'sec': 50.742223262786865, 'minatar-freeway/eval_R': 57.28999710083008, 'steps': 232783872}
+{'sec': 51.42781734466553, 'minatar-freeway/eval_R': 57.31999969482422, 'steps': 235929600}
+{'sec': 52.11323881149292, 'minatar-freeway/eval_R': 57.40999984741211, 'steps': 239075328}
+{'sec': 52.79850506782532, 'minatar-freeway/eval_R': 57.279998779296875, 'steps': 242221056}
+{'sec': 53.48379397392273, 'minatar-freeway/eval_R': 57.689998626708984, 'steps': 245366784}
+{'sec': 54.16900587081909, 'minatar-freeway/eval_R': 58.0, 'steps': 248512512}
+{'sec': 54.85440373420715, 'minatar-freeway/eval_R': 57.88999938964844, 'steps': 251658240}
+{'sec': 55.54004240036011, 'minatar-freeway/eval_R': 58.19999694824219, 'steps': 254803968}
+{'sec': 56.22552514076233, 'minatar-freeway/eval_R': 57.97999954223633, 'steps': 257949696}
+{'sec': 56.910428047180176, 'minatar-freeway/eval_R': 57.88999938964844, 'steps': 261095424}
+{'sec': 57.59545850753784, 'minatar-freeway/eval_R': 58.5, 'steps': 264241152}
+{'sec': 58.28043603897095, 'minatar-freeway/eval_R': 58.48999786376953, 'steps': 267386880}
+{'sec': 58.965638875961304, 'minatar-freeway/eval_R': 58.5099983215332, 'steps': 270532608}
+{'sec': 59.65122985839844, 'minatar-freeway/eval_R': 58.80999755859375, 'steps': 273678336}
+{'sec': 60.336517572402954, 'minatar-freeway/eval_R': 59.0, 'steps': 276824064}
+{'sec': 61.021599769592285, 'minatar-freeway/eval_R': 58.8599967956543, 'steps': 279969792}
+{'sec': 61.70653462409973, 'minatar-freeway/eval_R': 58.5099983215332, 'steps': 283115520}
+{'sec': 62.392090797424316, 'minatar-freeway/eval_R': 59.03999710083008, 'steps': 286261248}
+{'sec': 63.077319860458374, 'minatar-freeway/eval_R': 59.09000015258789, 'steps': 289406976}
+{'sec': 63.76302099227905, 'minatar-freeway/eval_R': 59.09000015258789, 'steps': 292552704}
+{'sec': 64.44842648506165, 'minatar-freeway/eval_R': 59.2599983215332, 'steps': 295698432}
+{'sec': 65.13359832763672, 'minatar-freeway/eval_R': 59.56999969482422, 'steps': 298844160}
+Model saved to ./minatar-ppo-macroflat-models/minatar-freeway//minatar-freeway-macroflat-fs=2-N=6-70k-params.ckpt
+Training complete!
