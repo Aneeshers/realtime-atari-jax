@@ -7,6 +7,7 @@ Please refer to their work if you use this example in your research."""
 import sys
 import time
 import math
+import shutil
 import pickle
 from functools import partial
 from typing import NamedTuple, Literal
@@ -89,6 +90,7 @@ class PPOConfig(BaseModel):
     max_grad_norm: float = 0.5
     wandb_project: str = "pgx-minatar-ppo"
     save_model: bool = True
+    out_models_dir: str = "/home/ubuntu/tensorflow_test/control/real-timeRL/realtime-atari-jax/examples/minatar-ppo/space_models"
 
     class Config:
         extra = "forbid"
@@ -185,6 +187,16 @@ class Transition(NamedTuple):
     reward: jnp.ndarray
     log_prob: jnp.ndarray
     obs: jnp.ndarray
+
+
+def save_checkpoint(model: nnx.Module, step: int) -> str:
+    checkpoint_path = os.path.join(
+        args.out_models_dir,
+        f"{args.env_name}-seed={args.seed}-steps={step}.ckpt",
+    )
+    with open(checkpoint_path, "wb") as f:
+        pickle.dump(nnx.state(model, nnx.Param), f)
+    return checkpoint_path
 
 
 # -----------------------------
@@ -384,6 +396,15 @@ def train(rng):
     rng, _rng = jax.random.split(rng)
     eval_R = evaluate(runner_state[0], _rng)
     steps = 0
+    training_total = args.num_envs * args.num_steps * num_updates
+    checkpoint_targets = []
+    checkpoint_paths = {}
+    if args.save_model:
+        os.makedirs(args.out_models_dir, exist_ok=True)
+        base_interval = max(1, math.ceil(training_total / 4))
+        checkpoint_targets = [min(training_total, base_interval * i) for i in range(1, 4)]
+        checkpoint_targets.append(training_total)
+        checkpoint_targets = sorted(set(checkpoint_targets))
     log = {"sec": tt, f"{args.env_name}/eval_R": float(eval_R), "steps": steps}
     print(log)
     wandb.log(log)
@@ -403,20 +424,46 @@ def train(rng):
         print(log)
         wandb.log(log)
         st = time.time()
+        if args.save_model:
+            for target in checkpoint_targets:
+                if steps >= target and target not in checkpoint_paths:
+                    checkpoint_paths[target] = save_checkpoint(model, target)
 
-    return runner_state  # (model, optimizer, env_state, last_obs, rng)
+    if args.save_model:
+        for target in checkpoint_targets:
+            if steps >= target and target not in checkpoint_paths:
+                checkpoint_paths[target] = save_checkpoint(runner_state[0], target)
+
+    return runner_state, checkpoint_paths  # (model, optimizer, env_state, last_obs, rng)
 
 
 
 if __name__ == "__main__":
     wandb.init(project=args.wandb_project, config=args.dict())
     rng = jax.random.PRNGKey(args.seed)
-    out = train(rng)
+    out, checkpoint_paths = train(rng)
     if args.save_model:
         model = out[0]
-        # Save only learnable parameters (nnx.Param state) like Haiku params
-        with open(f"{args.env_name}-seed={args.seed}.ckpt", "wb") as f:
-            pickle.dump(nnx.state(model, nnx.Param), f)
+        if checkpoint_paths:
+            final_step = max(checkpoint_paths)
+            shutil.copyfile(
+                checkpoint_paths[final_step],
+                os.path.join(
+                    args.out_models_dir,
+                    f"{args.env_name}-seed={args.seed}.ckpt",
+                ),
+            )
+        else:
+            # Save only learnable parameters (nnx.Param state) like Haiku params
+            os.makedirs(args.out_models_dir, exist_ok=True)
+            with open(
+                os.path.join(
+                    args.out_models_dir,
+                    f"{args.env_name}-seed={args.seed}.ckpt",
+                ),
+                "wb",
+            ) as f:
+                pickle.dump(nnx.state(model, nnx.Param), f)
 
 
     

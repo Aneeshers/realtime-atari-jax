@@ -1,0 +1,18 @@
+{
+  "model_order": [
+    "minatar_space_invaders_seed_0",
+    "minatar_space_invaders_seed_0_steps_4980736",
+    "minatar_space_invaders_seed_0_steps_9961472",
+    "minatar_space_invaders_seed_0_steps_14942208",
+    "minatar_space_invaders_seed_0_steps_19922944"
+  ],
+  "total_states": 5034,
+  "suffix_summary": {
+    "1": 531,
+    "2": 511,
+    "3": 624,
+    "5": 3368
+  },
+  "average_matching_models": 4.441994437822805,
+  "fraction_all_models_agree": 0.6690504568931267
+}
