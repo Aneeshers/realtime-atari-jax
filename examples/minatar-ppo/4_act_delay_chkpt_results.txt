@@ -1,0 +1,59 @@
+======================================================================
+Action Delay Evaluation Results (Plan Horizon K=4)
+======================================================================
+
+Checkpoint          Delay=0       Delay=1       Delay=2       Delay=3       Delay=4       Delay=5       Delay=6       Delay=7       Delay=8       
+----------------------------------------------------------------------
+50000k.ckpt         30.19        18.81        13.25        10.06        8.81         8.94         6.44         6.12         2.50         
+100000k.ckpt        104.56       36.06        16.62        11.75        10.38        7.44         4.94         2.00         2.00         
+150000k.ckpt        195.06       45.00        16.44        9.50         10.00        6.56         5.44         1.00         1.00         
+full.ckpt           207.27       58.88        13.00        12.38        11.38        8.50         9.31         2.50         1.19         
+
+======================================================================
+Detailed Results by Checkpoint:
+======================================================================
+
+50000k.ckpt:
+  Action Delay  0:   30.19
+  Action Delay  1:   18.81
+  Action Delay  2:   13.25
+  Action Delay  3:   10.06
+  Action Delay  4:    8.81
+  Action Delay  5:    8.94
+  Action Delay  6:    6.44
+  Action Delay  7:    6.12
+  Action Delay  8:    2.50
+
+100000k.ckpt:
+  Action Delay  0:  104.56
+  Action Delay  1:   36.06
+  Action Delay  2:   16.62
+  Action Delay  3:   11.75
+  Action Delay  4:   10.38
+  Action Delay  5:    7.44
+  Action Delay  6:    4.94
+  Action Delay  7:    2.00
+  Action Delay  8:    2.00
+
+150000k.ckpt:
+  Action Delay  0:  195.06
+  Action Delay  1:   45.00
+  Action Delay  2:   16.44
+  Action Delay  3:    9.50
+  Action Delay  4:   10.00
+  Action Delay  5:    6.56
+  Action Delay  6:    5.44
+  Action Delay  7:    1.00
+  Action Delay  8:    1.00
+
+full.ckpt:
+  Action Delay  0:  207.27
+  Action Delay  1:   58.88
+  Action Delay  2:   13.00
+  Action Delay  3:   12.38
+  Action Delay  4:   11.38
+  Action Delay  5:    8.50
+  Action Delay  6:    9.31
+  Action Delay  7:    2.50
+  Action Delay  8:    1.19
+
